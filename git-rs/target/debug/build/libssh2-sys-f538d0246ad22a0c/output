@@ -1,0 +1,2932 @@
+cargo:rerun-if-env-changed=LIBSSH2_SYS_USE_PKG_CONFIG
+cargo:include=/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include
+cargo:root=/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out
+cargo:rerun-if-env-changed=DEP_Z_INCLUDE
+cargo:rerun-if-env-changed=DEP_OPENSSL_INCLUDE
+TARGET = Some("aarch64-apple-darwin")
+OPT_LEVEL = Some("0")
+HOST = Some("aarch64-apple-darwin")
+cargo:rerun-if-env-changed=CC_aarch64-apple-darwin
+CC_aarch64-apple-darwin = None
+cargo:rerun-if-env-changed=CC_aarch64_apple_darwin
+CC_aarch64_apple_darwin = None
+cargo:rerun-if-env-changed=HOST_CC
+HOST_CC = None
+cargo:rerun-if-env-changed=CC
+CC = None
+cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS
+CRATE_CC_NO_DEFAULTS = None
+DEBUG = Some("true")
+CARGO_CFG_TARGET_FEATURE = Some("aes,crc,dit,dotprod,dpb,dpb2,fcma,fhm,flagm,fp16,frintts,jsconv,lor,lse,neon,paca,pacg,pan,pmuv3,ras,rcpc,rcpc2,rdm,sb,sha2,sha3,ssbs,vh")
+cargo:rerun-if-env-changed=CFLAGS_aarch64-apple-darwin
+CFLAGS_aarch64-apple-darwin = None
+cargo:rerun-if-env-changed=CFLAGS_aarch64_apple_darwin
+CFLAGS_aarch64_apple_darwin = None
+cargo:rerun-if-env-changed=HOST_CFLAGS
+HOST_CFLAGS = None
+cargo:rerun-if-env-changed=CFLAGS
+CFLAGS = None
+running: env -u IPHONEOS_DEPLOYMENT_TARGET "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "-arch" "arm64" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include" "-I" "libssh2/src" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build" "-I" "/opt/homebrew/opt/openssl@3/include" "-fvisibility=hidden" "-DHAVE_LONGLONG" "-DHAVE_SNPRINTF" "-DHAVE_UNISTD_H" "-DHAVE_INTTYPES_H" "-DHAVE_STDLIB_H" "-DHAVE_SYS_SELECT_H" "-DHAVE_SYS_SOCKET_H" "-DHAVE_SYS_IOCTL_H" "-DHAVE_SYS_TIME_H" "-DHAVE_SYS_UN_H" "-DHAVE_O_NONBLOCK" "-DLIBSSH2_OPENSSL" "-DHAVE_LIBCRYPT32" "-DHAVE_EVP_AES_128_CTR" "-DHAVE_POLL" "-DHAVE_GETTIMEOFDAY" "-DLIBSSH2_DH_GEX_NEW" "-DLIBSSH2_HAVE_ZLIB" "-DLIBSSH2DEBUG" "-o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/agent.o" "-c" "libssh2/src/agent.c"
+running: env -u IPHONEOS_DEPLOYMENT_TARGET "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "-arch" "arm64" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include" "-I" "libssh2/src" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build" "-I" "/opt/homebrew/opt/openssl@3/include" "-fvisibility=hidden" "-DHAVE_LONGLONG" "-DHAVE_SNPRINTF" "-DHAVE_UNISTD_H" "-DHAVE_INTTYPES_H" "-DHAVE_STDLIB_H" "-DHAVE_SYS_SELECT_H" "-DHAVE_SYS_SOCKET_H" "-DHAVE_SYS_IOCTL_H" "-DHAVE_SYS_TIME_H" "-DHAVE_SYS_UN_H" "-DHAVE_O_NONBLOCK" "-DLIBSSH2_OPENSSL" "-DHAVE_LIBCRYPT32" "-DHAVE_EVP_AES_128_CTR" "-DHAVE_POLL" "-DHAVE_GETTIMEOFDAY" "-DLIBSSH2_DH_GEX_NEW" "-DLIBSSH2_HAVE_ZLIB" "-DLIBSSH2DEBUG" "-o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/bcrypt_pbkdf.o" "-c" "libssh2/src/bcrypt_pbkdf.c"
+running: env -u IPHONEOS_DEPLOYMENT_TARGET "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "-arch" "arm64" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include" "-I" "libssh2/src" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build" "-I" "/opt/homebrew/opt/openssl@3/include" "-fvisibility=hidden" "-DHAVE_LONGLONG" "-DHAVE_SNPRINTF" "-DHAVE_UNISTD_H" "-DHAVE_INTTYPES_H" "-DHAVE_STDLIB_H" "-DHAVE_SYS_SELECT_H" "-DHAVE_SYS_SOCKET_H" "-DHAVE_SYS_IOCTL_H" "-DHAVE_SYS_TIME_H" "-DHAVE_SYS_UN_H" "-DHAVE_O_NONBLOCK" "-DLIBSSH2_OPENSSL" "-DHAVE_LIBCRYPT32" "-DHAVE_EVP_AES_128_CTR" "-DHAVE_POLL" "-DHAVE_GETTIMEOFDAY" "-DLIBSSH2_DH_GEX_NEW" "-DLIBSSH2_HAVE_ZLIB" "-DLIBSSH2DEBUG" "-o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/blowfish.o" "-c" "libssh2/src/blowfish.c"
+running: env -u IPHONEOS_DEPLOYMENT_TARGET "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "-arch" "arm64" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include" "-I" "libssh2/src" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build" "-I" "/opt/homebrew/opt/openssl@3/include" "-fvisibility=hidden" "-DHAVE_LONGLONG" "-DHAVE_SNPRINTF" "-DHAVE_UNISTD_H" "-DHAVE_INTTYPES_H" "-DHAVE_STDLIB_H" "-DHAVE_SYS_SELECT_H" "-DHAVE_SYS_SOCKET_H" "-DHAVE_SYS_IOCTL_H" "-DHAVE_SYS_TIME_H" "-DHAVE_SYS_UN_H" "-DHAVE_O_NONBLOCK" "-DLIBSSH2_OPENSSL" "-DHAVE_LIBCRYPT32" "-DHAVE_EVP_AES_128_CTR" "-DHAVE_POLL" "-DHAVE_GETTIMEOFDAY" "-DLIBSSH2_DH_GEX_NEW" "-DLIBSSH2_HAVE_ZLIB" "-DLIBSSH2DEBUG" "-o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/channel.o" "-c" "libssh2/src/channel.c"
+running: env -u IPHONEOS_DEPLOYMENT_TARGET "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "-arch" "arm64" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include" "-I" "libssh2/src" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build" "-I" "/opt/homebrew/opt/openssl@3/include" "-fvisibility=hidden" "-DHAVE_LONGLONG" "-DHAVE_SNPRINTF" "-DHAVE_UNISTD_H" "-DHAVE_INTTYPES_H" "-DHAVE_STDLIB_H" "-DHAVE_SYS_SELECT_H" "-DHAVE_SYS_SOCKET_H" "-DHAVE_SYS_IOCTL_H" "-DHAVE_SYS_TIME_H" "-DHAVE_SYS_UN_H" "-DHAVE_O_NONBLOCK" "-DLIBSSH2_OPENSSL" "-DHAVE_LIBCRYPT32" "-DHAVE_EVP_AES_128_CTR" "-DHAVE_POLL" "-DHAVE_GETTIMEOFDAY" "-DLIBSSH2_DH_GEX_NEW" "-DLIBSSH2_HAVE_ZLIB" "-DLIBSSH2DEBUG" "-o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/comp.o" "-c" "libssh2/src/comp.c"
+running: env -u IPHONEOS_DEPLOYMENT_TARGET "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "-arch" "arm64" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include" "-I" "libssh2/src" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build" "-I" "/opt/homebrew/opt/openssl@3/include" "-fvisibility=hidden" "-DHAVE_LONGLONG" "-DHAVE_SNPRINTF" "-DHAVE_UNISTD_H" "-DHAVE_INTTYPES_H" "-DHAVE_STDLIB_H" "-DHAVE_SYS_SELECT_H" "-DHAVE_SYS_SOCKET_H" "-DHAVE_SYS_IOCTL_H" "-DHAVE_SYS_TIME_H" "-DHAVE_SYS_UN_H" "-DHAVE_O_NONBLOCK" "-DLIBSSH2_OPENSSL" "-DHAVE_LIBCRYPT32" "-DHAVE_EVP_AES_128_CTR" "-DHAVE_POLL" "-DHAVE_GETTIMEOFDAY" "-DLIBSSH2_DH_GEX_NEW" "-DLIBSSH2_HAVE_ZLIB" "-DLIBSSH2DEBUG" "-o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/crypt.o" "-c" "libssh2/src/crypt.c"
+running: env -u IPHONEOS_DEPLOYMENT_TARGET "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "-arch" "arm64" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include" "-I" "libssh2/src" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build" "-I" "/opt/homebrew/opt/openssl@3/include" "-fvisibility=hidden" "-DHAVE_LONGLONG" "-DHAVE_SNPRINTF" "-DHAVE_UNISTD_H" "-DHAVE_INTTYPES_H" "-DHAVE_STDLIB_H" "-DHAVE_SYS_SELECT_H" "-DHAVE_SYS_SOCKET_H" "-DHAVE_SYS_IOCTL_H" "-DHAVE_SYS_TIME_H" "-DHAVE_SYS_UN_H" "-DHAVE_O_NONBLOCK" "-DLIBSSH2_OPENSSL" "-DHAVE_LIBCRYPT32" "-DHAVE_EVP_AES_128_CTR" "-DHAVE_POLL" "-DHAVE_GETTIMEOFDAY" "-DLIBSSH2_DH_GEX_NEW" "-DLIBSSH2_HAVE_ZLIB" "-DLIBSSH2DEBUG" "-o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/global.o" "-c" "libssh2/src/global.c"
+running: env -u IPHONEOS_DEPLOYMENT_TARGET "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "-arch" "arm64" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include" "-I" "libssh2/src" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build" "-I" "/opt/homebrew/opt/openssl@3/include" "-fvisibility=hidden" "-DHAVE_LONGLONG" "-DHAVE_SNPRINTF" "-DHAVE_UNISTD_H" "-DHAVE_INTTYPES_H" "-DHAVE_STDLIB_H" "-DHAVE_SYS_SELECT_H" "-DHAVE_SYS_SOCKET_H" "-DHAVE_SYS_IOCTL_H" "-DHAVE_SYS_TIME_H" "-DHAVE_SYS_UN_H" "-DHAVE_O_NONBLOCK" "-DLIBSSH2_OPENSSL" "-DHAVE_LIBCRYPT32" "-DHAVE_EVP_AES_128_CTR" "-DHAVE_POLL" "-DHAVE_GETTIMEOFDAY" "-DLIBSSH2_DH_GEX_NEW" "-DLIBSSH2_HAVE_ZLIB" "-DLIBSSH2DEBUG" "-o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/hostkey.o" "-c" "libssh2/src/hostkey.c"
+cargo:warning=libssh2/src/hostkey.c:403:5: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    _libssh2_rsa_free(rsactx);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:348:35: note: expanded from macro '_libssh2_rsa_free'
+
+cargo:warning=#define _libssh2_rsa_free(rsactx) RSA_free(rsactx)
+
+cargo:warning=                                  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/hostkey.c:672:5: warning: 'DSA_free' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    _libssh2_dsa_free(dsactx);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:352:35: note: expanded from macro '_libssh2_dsa_free'
+
+cargo:warning=#define _libssh2_dsa_free(dsactx) DSA_free(dsactx)
+
+cargo:warning=                                  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/dsa.h:132:1: note: 'DSA_free' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void DSA_free(DSA *r);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/hostkey.c:952:9: warning: 'EC_KEY_free' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        _libssh2_ecdsa_free(keyctx);
+
+cargo:warning=        ^
+
+cargo:warning=libssh2/src/openssl.h:356:39: note: expanded from macro '_libssh2_ecdsa_free'
+
+cargo:warning=#define _libssh2_ecdsa_free(ecdsactx) EC_KEY_free(ecdsactx)
+
+cargo:warning=                                      ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/ec.h:1022:1: note: 'EC_KEY_free' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void EC_KEY_free(EC_KEY *key);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=3 warnings generated.
+
+running: env -u IPHONEOS_DEPLOYMENT_TARGET "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "-arch" "arm64" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include" "-I" "libssh2/src" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build" "-I" "/opt/homebrew/opt/openssl@3/include" "-fvisibility=hidden" "-DHAVE_LONGLONG" "-DHAVE_SNPRINTF" "-DHAVE_UNISTD_H" "-DHAVE_INTTYPES_H" "-DHAVE_STDLIB_H" "-DHAVE_SYS_SELECT_H" "-DHAVE_SYS_SOCKET_H" "-DHAVE_SYS_IOCTL_H" "-DHAVE_SYS_TIME_H" "-DHAVE_SYS_UN_H" "-DHAVE_O_NONBLOCK" "-DLIBSSH2_OPENSSL" "-DHAVE_LIBCRYPT32" "-DHAVE_EVP_AES_128_CTR" "-DHAVE_POLL" "-DHAVE_GETTIMEOFDAY" "-DLIBSSH2_DH_GEX_NEW" "-DLIBSSH2_HAVE_ZLIB" "-DLIBSSH2DEBUG" "-o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/keepalive.o" "-c" "libssh2/src/keepalive.c"
+running: env -u IPHONEOS_DEPLOYMENT_TARGET "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "-arch" "arm64" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include" "-I" "libssh2/src" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build" "-I" "/opt/homebrew/opt/openssl@3/include" "-fvisibility=hidden" "-DHAVE_LONGLONG" "-DHAVE_SNPRINTF" "-DHAVE_UNISTD_H" "-DHAVE_INTTYPES_H" "-DHAVE_STDLIB_H" "-DHAVE_SYS_SELECT_H" "-DHAVE_SYS_SOCKET_H" "-DHAVE_SYS_IOCTL_H" "-DHAVE_SYS_TIME_H" "-DHAVE_SYS_UN_H" "-DHAVE_O_NONBLOCK" "-DLIBSSH2_OPENSSL" "-DHAVE_LIBCRYPT32" "-DHAVE_EVP_AES_128_CTR" "-DHAVE_POLL" "-DHAVE_GETTIMEOFDAY" "-DLIBSSH2_DH_GEX_NEW" "-DLIBSSH2_HAVE_ZLIB" "-DLIBSSH2DEBUG" "-o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/kex.o" "-c" "libssh2/src/kex.c"
+running: env -u IPHONEOS_DEPLOYMENT_TARGET "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "-arch" "arm64" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include" "-I" "libssh2/src" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build" "-I" "/opt/homebrew/opt/openssl@3/include" "-fvisibility=hidden" "-DHAVE_LONGLONG" "-DHAVE_SNPRINTF" "-DHAVE_UNISTD_H" "-DHAVE_INTTYPES_H" "-DHAVE_STDLIB_H" "-DHAVE_SYS_SELECT_H" "-DHAVE_SYS_SOCKET_H" "-DHAVE_SYS_IOCTL_H" "-DHAVE_SYS_TIME_H" "-DHAVE_SYS_UN_H" "-DHAVE_O_NONBLOCK" "-DLIBSSH2_OPENSSL" "-DHAVE_LIBCRYPT32" "-DHAVE_EVP_AES_128_CTR" "-DHAVE_POLL" "-DHAVE_GETTIMEOFDAY" "-DLIBSSH2_DH_GEX_NEW" "-DLIBSSH2_HAVE_ZLIB" "-DLIBSSH2DEBUG" "-o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/knownhost.o" "-c" "libssh2/src/knownhost.c"
+running: env -u IPHONEOS_DEPLOYMENT_TARGET "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "-arch" "arm64" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include" "-I" "libssh2/src" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build" "-I" "/opt/homebrew/opt/openssl@3/include" "-fvisibility=hidden" "-DHAVE_LONGLONG" "-DHAVE_SNPRINTF" "-DHAVE_UNISTD_H" "-DHAVE_INTTYPES_H" "-DHAVE_STDLIB_H" "-DHAVE_SYS_SELECT_H" "-DHAVE_SYS_SOCKET_H" "-DHAVE_SYS_IOCTL_H" "-DHAVE_SYS_TIME_H" "-DHAVE_SYS_UN_H" "-DHAVE_O_NONBLOCK" "-DLIBSSH2_OPENSSL" "-DHAVE_LIBCRYPT32" "-DHAVE_EVP_AES_128_CTR" "-DHAVE_POLL" "-DHAVE_GETTIMEOFDAY" "-DLIBSSH2_DH_GEX_NEW" "-DLIBSSH2_HAVE_ZLIB" "-DLIBSSH2DEBUG" "-o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/mac.o" "-c" "libssh2/src/mac.c"
+running: env -u IPHONEOS_DEPLOYMENT_TARGET "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "-arch" "arm64" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include" "-I" "libssh2/src" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build" "-I" "/opt/homebrew/opt/openssl@3/include" "-fvisibility=hidden" "-DHAVE_LONGLONG" "-DHAVE_SNPRINTF" "-DHAVE_UNISTD_H" "-DHAVE_INTTYPES_H" "-DHAVE_STDLIB_H" "-DHAVE_SYS_SELECT_H" "-DHAVE_SYS_SOCKET_H" "-DHAVE_SYS_IOCTL_H" "-DHAVE_SYS_TIME_H" "-DHAVE_SYS_UN_H" "-DHAVE_O_NONBLOCK" "-DLIBSSH2_OPENSSL" "-DHAVE_LIBCRYPT32" "-DHAVE_EVP_AES_128_CTR" "-DHAVE_POLL" "-DHAVE_GETTIMEOFDAY" "-DLIBSSH2_DH_GEX_NEW" "-DLIBSSH2_HAVE_ZLIB" "-DLIBSSH2DEBUG" "-o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/misc.o" "-c" "libssh2/src/misc.c"
+running: env -u IPHONEOS_DEPLOYMENT_TARGET "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "-arch" "arm64" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include" "-I" "libssh2/src" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build" "-I" "/opt/homebrew/opt/openssl@3/include" "-fvisibility=hidden" "-DHAVE_LONGLONG" "-DHAVE_SNPRINTF" "-DHAVE_UNISTD_H" "-DHAVE_INTTYPES_H" "-DHAVE_STDLIB_H" "-DHAVE_SYS_SELECT_H" "-DHAVE_SYS_SOCKET_H" "-DHAVE_SYS_IOCTL_H" "-DHAVE_SYS_TIME_H" "-DHAVE_SYS_UN_H" "-DHAVE_O_NONBLOCK" "-DLIBSSH2_OPENSSL" "-DHAVE_LIBCRYPT32" "-DHAVE_EVP_AES_128_CTR" "-DHAVE_POLL" "-DHAVE_GETTIMEOFDAY" "-DLIBSSH2_DH_GEX_NEW" "-DLIBSSH2_HAVE_ZLIB" "-DLIBSSH2DEBUG" "-o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/packet.o" "-c" "libssh2/src/packet.c"
+running: env -u IPHONEOS_DEPLOYMENT_TARGET "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "-arch" "arm64" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include" "-I" "libssh2/src" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build" "-I" "/opt/homebrew/opt/openssl@3/include" "-fvisibility=hidden" "-DHAVE_LONGLONG" "-DHAVE_SNPRINTF" "-DHAVE_UNISTD_H" "-DHAVE_INTTYPES_H" "-DHAVE_STDLIB_H" "-DHAVE_SYS_SELECT_H" "-DHAVE_SYS_SOCKET_H" "-DHAVE_SYS_IOCTL_H" "-DHAVE_SYS_TIME_H" "-DHAVE_SYS_UN_H" "-DHAVE_O_NONBLOCK" "-DLIBSSH2_OPENSSL" "-DHAVE_LIBCRYPT32" "-DHAVE_EVP_AES_128_CTR" "-DHAVE_POLL" "-DHAVE_GETTIMEOFDAY" "-DLIBSSH2_DH_GEX_NEW" "-DLIBSSH2_HAVE_ZLIB" "-DLIBSSH2DEBUG" "-o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/pem.o" "-c" "libssh2/src/pem.c"
+running: env -u IPHONEOS_DEPLOYMENT_TARGET "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "-arch" "arm64" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include" "-I" "libssh2/src" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build" "-I" "/opt/homebrew/opt/openssl@3/include" "-fvisibility=hidden" "-DHAVE_LONGLONG" "-DHAVE_SNPRINTF" "-DHAVE_UNISTD_H" "-DHAVE_INTTYPES_H" "-DHAVE_STDLIB_H" "-DHAVE_SYS_SELECT_H" "-DHAVE_SYS_SOCKET_H" "-DHAVE_SYS_IOCTL_H" "-DHAVE_SYS_TIME_H" "-DHAVE_SYS_UN_H" "-DHAVE_O_NONBLOCK" "-DLIBSSH2_OPENSSL" "-DHAVE_LIBCRYPT32" "-DHAVE_EVP_AES_128_CTR" "-DHAVE_POLL" "-DHAVE_GETTIMEOFDAY" "-DLIBSSH2_DH_GEX_NEW" "-DLIBSSH2_HAVE_ZLIB" "-DLIBSSH2DEBUG" "-o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/publickey.o" "-c" "libssh2/src/publickey.c"
+cargo:warning=libssh2/src/kex.c:2322:9: warning: 'EC_KEY_free' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        _libssh2_ecdsa_free(key_state->private_key);
+
+cargo:warning=        ^
+
+cargo:warning=libssh2/src/openssl.h:356:39: note: expanded from macro '_libssh2_ecdsa_free'
+
+cargo:warning=#define _libssh2_ecdsa_free(ecdsactx) EC_KEY_free(ecdsactx)
+
+cargo:warning=                                      ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/ec.h:1022:1: note: 'EC_KEY_free' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void EC_KEY_free(EC_KEY *key);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/knownhost.c:423:21: warning: 'HMAC_CTX_new' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=                    libssh2_hmac_ctx_init(ctx);
+
+cargo:warning=                    ^
+
+cargo:warning=libssh2/src/openssl.h:304:42: note: expanded from macro 'libssh2_hmac_ctx_init'
+
+cargo:warning=#define libssh2_hmac_ctx_init(ctx) ctx = HMAC_CTX_new()
+
+cargo:warning=                                         ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:33:1: note: 'HMAC_CTX_new' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 HMAC_CTX *HMAC_CTX_new(void);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/knownhost.c:430:21: warning: 'HMAC_Init_ex' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=                    libssh2_hmac_sha1_init(&ctx, (unsigned char *)node->salt,
+
+cargo:warning=                    ^
+
+cargo:warning=libssh2/src/openssl.h:306:3: note: expanded from macro 'libssh2_hmac_sha1_init'
+
+cargo:warning=  HMAC_Init_ex(*(ctx), key, keylen, EVP_sha1(), NULL)
+
+cargo:warning=  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:43:1: note: 'HMAC_Init_ex' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Init_ex(HMAC_CTX *ctx, const void *key, int len,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/knownhost.c:432:21: warning: 'HMAC_Update' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=                    libssh2_hmac_update(ctx, (unsigned char *)host,
+
+cargo:warning=                    ^
+
+cargo:warning=libssh2/src/openssl.h:317:3: note: expanded from macro 'libssh2_hmac_update'
+
+cargo:warning=  HMAC_Update(ctx, data, datalen)
+
+cargo:warning=  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:45:1: note: 'HMAC_Update' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Update(HMAC_CTX *ctx, const unsigned char *data,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/knownhost.c:434:21: warning: 'HMAC_Final' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=                    libssh2_hmac_final(ctx, hash);
+
+cargo:warning=                    ^
+
+cargo:warning=libssh2/src/openssl.h:318:39: note: expanded from macro 'libssh2_hmac_final'
+
+cargo:warning=#define libssh2_hmac_final(ctx, data) HMAC_Final(ctx, data, NULL)
+
+cargo:warning=                                      ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:47:1: note: 'HMAC_Final' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Final(HMAC_CTX *ctx, unsigned char *md,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/knownhost.c:435:21: warning: 'HMAC_CTX_free' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=                    libssh2_hmac_cleanup(&ctx);
+
+cargo:warning=                    ^
+
+cargo:warning=libssh2/src/openssl.h:319:35: note: expanded from macro 'libssh2_hmac_cleanup'
+
+cargo:warning=#define libssh2_hmac_cleanup(ctx) HMAC_CTX_free(*(ctx))
+
+cargo:warning=                                  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:35:1: note: 'HMAC_CTX_free' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void HMAC_CTX_free(HMAC_CTX *ctx);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+running: env -u IPHONEOS_DEPLOYMENT_TARGET "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "-arch" "arm64" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include" "-I" "libssh2/src" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build" "-I" "/opt/homebrew/opt/openssl@3/include" "-fvisibility=hidden" "-DHAVE_LONGLONG" "-DHAVE_SNPRINTF" "-DHAVE_UNISTD_H" "-DHAVE_INTTYPES_H" "-DHAVE_STDLIB_H" "-DHAVE_SYS_SELECT_H" "-DHAVE_SYS_SOCKET_H" "-DHAVE_SYS_IOCTL_H" "-DHAVE_SYS_TIME_H" "-DHAVE_SYS_UN_H" "-DHAVE_O_NONBLOCK" "-DLIBSSH2_OPENSSL" "-DHAVE_LIBCRYPT32" "-DHAVE_EVP_AES_128_CTR" "-DHAVE_POLL" "-DHAVE_GETTIMEOFDAY" "-DLIBSSH2_DH_GEX_NEW" "-DLIBSSH2_HAVE_ZLIB" "-DLIBSSH2DEBUG" "-o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/scp.o" "-c" "libssh2/src/scp.c"
+cargo:warning=libssh2/src/mac.c:117:5: warning: 'HMAC_CTX_new' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_ctx_init(ctx);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:304:42: note: expanded from macro 'libssh2_hmac_ctx_init'
+
+cargo:warning=#define libssh2_hmac_ctx_init(ctx) ctx = HMAC_CTX_new()
+
+cargo:warning=                                         ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:33:1: note: 'HMAC_CTX_new' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 HMAC_CTX *HMAC_CTX_new(void);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:118:5: warning: 'HMAC_Init_ex' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_sha512_init(&ctx, *abstract, 64);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:314:3: note: expanded from macro 'libssh2_hmac_sha512_init'
+
+cargo:warning=  HMAC_Init_ex(*(ctx), key, keylen, EVP_sha512(), NULL)
+
+cargo:warning=  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:43:1: note: 'HMAC_Init_ex' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Init_ex(HMAC_CTX *ctx, const void *key, int len,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:119:5: warning: 'HMAC_Update' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_update(ctx, seqno_buf, 4);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:317:3: note: expanded from macro 'libssh2_hmac_update'
+
+cargo:warning=  HMAC_Update(ctx, data, datalen)
+
+cargo:warning=  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:45:1: note: 'HMAC_Update' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Update(HMAC_CTX *ctx, const unsigned char *data,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:120:5: warning: 'HMAC_Update' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_update(ctx, packet, packet_len);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:317:3: note: expanded from macro 'libssh2_hmac_update'
+
+cargo:warning=  HMAC_Update(ctx, data, datalen)
+
+cargo:warning=  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:45:1: note: 'HMAC_Update' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Update(HMAC_CTX *ctx, const unsigned char *data,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:122:9: warning: 'HMAC_Update' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        libssh2_hmac_update(ctx, addtl, addtl_len);
+
+cargo:warning=        ^
+
+cargo:warning=libssh2/src/openssl.h:317:3: note: expanded from macro 'libssh2_hmac_update'
+
+cargo:warning=  HMAC_Update(ctx, data, datalen)
+
+cargo:warning=  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:45:1: note: 'HMAC_Update' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Update(HMAC_CTX *ctx, const unsigned char *data,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:124:5: warning: 'HMAC_Final' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_final(ctx, buf);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:318:39: note: expanded from macro 'libssh2_hmac_final'
+
+cargo:warning=#define libssh2_hmac_final(ctx, data) HMAC_Final(ctx, data, NULL)
+
+cargo:warning=                                      ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:47:1: note: 'HMAC_Final' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Final(HMAC_CTX *ctx, unsigned char *md,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:125:5: warning: 'HMAC_CTX_free' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_cleanup(&ctx);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:319:35: note: expanded from macro 'libssh2_hmac_cleanup'
+
+cargo:warning=#define libssh2_hmac_cleanup(ctx) HMAC_CTX_free(*(ctx))
+
+cargo:warning=                                  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:35:1: note: 'HMAC_CTX_free' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void HMAC_CTX_free(HMAC_CTX *ctx);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:162:5: warning: 'HMAC_CTX_new' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_ctx_init(ctx);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:304:42: note: expanded from macro 'libssh2_hmac_ctx_init'
+
+cargo:warning=#define libssh2_hmac_ctx_init(ctx) ctx = HMAC_CTX_new()
+
+cargo:warning=                                         ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:33:1: note: 'HMAC_CTX_new' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 HMAC_CTX *HMAC_CTX_new(void);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:163:5: warning: 'HMAC_Init_ex' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_sha256_init(&ctx, *abstract, 32);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:312:3: note: expanded from macro 'libssh2_hmac_sha256_init'
+
+cargo:warning=  HMAC_Init_ex(*(ctx), key, keylen, EVP_sha256(), NULL)
+
+cargo:warning=  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:43:1: note: 'HMAC_Init_ex' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Init_ex(HMAC_CTX *ctx, const void *key, int len,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:164:5: warning: 'HMAC_Update' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_update(ctx, seqno_buf, 4);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:317:3: note: expanded from macro 'libssh2_hmac_update'
+
+cargo:warning=  HMAC_Update(ctx, data, datalen)
+
+cargo:warning=  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:45:1: note: 'HMAC_Update' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Update(HMAC_CTX *ctx, const unsigned char *data,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:165:5: warning: 'HMAC_Update' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_update(ctx, packet, packet_len);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:317:3: note: expanded from macro 'libssh2_hmac_update'
+
+cargo:warning=  HMAC_Update(ctx, data, datalen)
+
+cargo:warning=  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:45:1: note: 'HMAC_Update' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Update(HMAC_CTX *ctx, const unsigned char *data,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:167:9: warning: 'HMAC_Update' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        libssh2_hmac_update(ctx, addtl, addtl_len);
+
+cargo:warning=        ^
+
+cargo:warning=libssh2/src/openssl.h:317:3: note: expanded from macro 'libssh2_hmac_update'
+
+cargo:warning=  HMAC_Update(ctx, data, datalen)
+
+cargo:warning=  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:45:1: note: 'HMAC_Update' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Update(HMAC_CTX *ctx, const unsigned char *data,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:169:5: warning: 'HMAC_Final' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_final(ctx, buf);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:318:39: note: expanded from macro 'libssh2_hmac_final'
+
+cargo:warning=#define libssh2_hmac_final(ctx, data) HMAC_Final(ctx, data, NULL)
+
+cargo:warning=                                      ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:47:1: note: 'HMAC_Final' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Final(HMAC_CTX *ctx, unsigned char *md,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:170:5: warning: 'HMAC_CTX_free' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_cleanup(&ctx);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:319:35: note: expanded from macro 'libssh2_hmac_cleanup'
+
+cargo:warning=#define libssh2_hmac_cleanup(ctx) HMAC_CTX_free(*(ctx))
+
+cargo:warning=                                  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:35:1: note: 'HMAC_CTX_free' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void HMAC_CTX_free(HMAC_CTX *ctx);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:207:5: warning: 'HMAC_CTX_new' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_ctx_init(ctx);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:304:42: note: expanded from macro 'libssh2_hmac_ctx_init'
+
+cargo:warning=#define libssh2_hmac_ctx_init(ctx) ctx = HMAC_CTX_new()
+
+cargo:warning=                                         ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:33:1: note: 'HMAC_CTX_new' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 HMAC_CTX *HMAC_CTX_new(void);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=5 warnings generated.
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:208:5: warning: 'HMAC_Init_ex' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_sha1_init(&ctx, *abstract, 20);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:306:3: note: expanded from macro 'libssh2_hmac_sha1_init'
+
+cargo:warning=  HMAC_Init_ex(*(ctx), key, keylen, EVP_sha1(), NULL)
+
+cargo:warning=  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:43:1: note: 'HMAC_Init_ex' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Init_ex(HMAC_CTX *ctx, const void *key, int len,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:209:5: warning: 'HMAC_Update' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_update(ctx, seqno_buf, 4);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:317:3: note: expanded from macro 'libssh2_hmac_update'
+
+cargo:warning=  HMAC_Update(ctx, data, datalen)
+
+cargo:warning=  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:45:1: note: 'HMAC_Update' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Update(HMAC_CTX *ctx, const unsigned char *data,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:210:5: warning: 'HMAC_Update' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_update(ctx, packet, packet_len);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:317:3: note: expanded from macro 'libssh2_hmac_update'
+
+cargo:warning=  HMAC_Update(ctx, data, datalen)
+
+cargo:warning=  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:45:1: note: 'HMAC_Update' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Update(HMAC_CTX *ctx, const unsigned char *data,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:212:9: warning: 'HMAC_Update' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        libssh2_hmac_update(ctx, addtl, addtl_len);
+
+cargo:warning=        ^
+
+cargo:warning=libssh2/src/openssl.h:317:3: note: expanded from macro 'libssh2_hmac_update'
+
+cargo:warning=  HMAC_Update(ctx, data, datalen)
+
+cargo:warning=  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:45:1: note: 'HMAC_Update' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Update(HMAC_CTX *ctx, const unsigned char *data,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:214:5: warning: 'HMAC_Final' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_final(ctx, buf);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:318:39: note: expanded from macro 'libssh2_hmac_final'
+
+cargo:warning=#define libssh2_hmac_final(ctx, data) HMAC_Final(ctx, data, NULL)
+
+cargo:warning=                                      ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:47:1: note: 'HMAC_Final' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Final(HMAC_CTX *ctx, unsigned char *md,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:215:5: warning: 'HMAC_CTX_free' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_cleanup(&ctx);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:319:35: note: expanded from macro 'libssh2_hmac_cleanup'
+
+cargo:warning=#define libssh2_hmac_cleanup(ctx) HMAC_CTX_free(*(ctx))
+
+cargo:warning=                                  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:35:1: note: 'HMAC_CTX_free' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void HMAC_CTX_free(HMAC_CTX *ctx);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:280:5: warning: 'HMAC_CTX_new' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_ctx_init(ctx);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:304:42: note: expanded from macro 'libssh2_hmac_ctx_init'
+
+cargo:warning=#define libssh2_hmac_ctx_init(ctx) ctx = HMAC_CTX_new()
+
+cargo:warning=                                         ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:33:1: note: 'HMAC_CTX_new' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 HMAC_CTX *HMAC_CTX_new(void);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:281:5: warning: 'HMAC_Init_ex' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_md5_init(&ctx, *abstract, 16);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:308:3: note: expanded from macro 'libssh2_hmac_md5_init'
+
+cargo:warning=  HMAC_Init_ex(*(ctx), key, keylen, EVP_md5(), NULL)
+
+cargo:warning=  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:43:1: note: 'HMAC_Init_ex' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Init_ex(HMAC_CTX *ctx, const void *key, int len,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:282:5: warning: 'HMAC_Update' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_update(ctx, seqno_buf, 4);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:317:3: note: expanded from macro 'libssh2_hmac_update'
+
+cargo:warning=  HMAC_Update(ctx, data, datalen)
+
+cargo:warning=  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:45:1: note: 'HMAC_Update' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Update(HMAC_CTX *ctx, const unsigned char *data,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:283:5: warning: 'HMAC_Update' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_update(ctx, packet, packet_len);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:317:3: note: expanded from macro 'libssh2_hmac_update'
+
+cargo:warning=  HMAC_Update(ctx, data, datalen)
+
+cargo:warning=  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:45:1: note: 'HMAC_Update' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Update(HMAC_CTX *ctx, const unsigned char *data,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:285:9: warning: 'HMAC_Update' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        libssh2_hmac_update(ctx, addtl, addtl_len);
+
+cargo:warning=        ^
+
+cargo:warning=libssh2/src/openssl.h:317:3: note: expanded from macro 'libssh2_hmac_update'
+
+cargo:warning=  HMAC_Update(ctx, data, datalen)
+
+cargo:warning=  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:45:1: note: 'HMAC_Update' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Update(HMAC_CTX *ctx, const unsigned char *data,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:287:5: warning: 'HMAC_Final' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_final(ctx, buf);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:318:39: note: expanded from macro 'libssh2_hmac_final'
+
+cargo:warning=#define libssh2_hmac_final(ctx, data) HMAC_Final(ctx, data, NULL)
+
+cargo:warning=                                      ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:47:1: note: 'HMAC_Final' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Final(HMAC_CTX *ctx, unsigned char *md,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:288:5: warning: 'HMAC_CTX_free' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_cleanup(&ctx);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:319:35: note: expanded from macro 'libssh2_hmac_cleanup'
+
+cargo:warning=#define libssh2_hmac_cleanup(ctx) HMAC_CTX_free(*(ctx))
+
+cargo:warning=                                  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:35:1: note: 'HMAC_CTX_free' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void HMAC_CTX_free(HMAC_CTX *ctx);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:353:5: warning: 'HMAC_CTX_new' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_ctx_init(ctx);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:304:42: note: expanded from macro 'libssh2_hmac_ctx_init'
+
+running: env -u IPHONEOS_DEPLOYMENT_TARGET "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "-arch" "arm64" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include" "-I" "libssh2/src" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build" "-I" "/opt/homebrew/opt/openssl@3/include" "-fvisibility=hidden" "-DHAVE_LONGLONG" "-DHAVE_SNPRINTF" "-DHAVE_UNISTD_H" "-DHAVE_INTTYPES_H" "-DHAVE_STDLIB_H" "-DHAVE_SYS_SELECT_H" "-DHAVE_SYS_SOCKET_H" "-DHAVE_SYS_IOCTL_H" "-DHAVE_SYS_TIME_H" "-DHAVE_SYS_UN_H" "-DHAVE_O_NONBLOCK" "-DLIBSSH2_OPENSSL" "-DHAVE_LIBCRYPT32" "-DHAVE_EVP_AES_128_CTR" "-DHAVE_POLL" "-DHAVE_GETTIMEOFDAY" "-DLIBSSH2_DH_GEX_NEW" "-DLIBSSH2_HAVE_ZLIB" "-DLIBSSH2DEBUG" "-o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/session.o" "-c" "libssh2/src/session.c"
+cargo:warning=#define libssh2_hmac_ctx_init(ctx) ctx = HMAC_CTX_new()
+
+cargo:warning=                                         ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:33:1: note: 'HMAC_CTX_new' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 HMAC_CTX *HMAC_CTX_new(void);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:354:5: warning: 'HMAC_Init_ex' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_ripemd160_init(&ctx, *abstract, 20);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:310:3: note: expanded from macro 'libssh2_hmac_ripemd160_init'
+
+cargo:warning=  HMAC_Init_ex(*(ctx), key, keylen, EVP_ripemd160(), NULL)
+
+cargo:warning=  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:43:1: note: 'HMAC_Init_ex' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Init_ex(HMAC_CTX *ctx, const void *key, int len,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:355:5: warning: 'HMAC_Update' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_update(ctx, seqno_buf, 4);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:317:3: note: expanded from macro 'libssh2_hmac_update'
+
+cargo:warning=  HMAC_Update(ctx, data, datalen)
+
+cargo:warning=  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:45:1: note: 'HMAC_Update' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Update(HMAC_CTX *ctx, const unsigned char *data,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:356:5: warning: 'HMAC_Update' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_update(ctx, packet, packet_len);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:317:3: note: expanded from macro 'libssh2_hmac_update'
+
+cargo:warning=  HMAC_Update(ctx, data, datalen)
+
+cargo:warning=  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:45:1: note: 'HMAC_Update' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Update(HMAC_CTX *ctx, const unsigned char *data,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:358:9: warning: 'HMAC_Update' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        libssh2_hmac_update(ctx, addtl, addtl_len);
+
+cargo:warning=        ^
+
+cargo:warning=libssh2/src/openssl.h:317:3: note: expanded from macro 'libssh2_hmac_update'
+
+cargo:warning=  HMAC_Update(ctx, data, datalen)
+
+cargo:warning=  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:45:1: note: 'HMAC_Update' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Update(HMAC_CTX *ctx, const unsigned char *data,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:360:5: warning: 'HMAC_Final' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_final(ctx, buf);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:318:39: note: expanded from macro 'libssh2_hmac_final'
+
+cargo:warning=#define libssh2_hmac_final(ctx, data) HMAC_Final(ctx, data, NULL)
+
+cargo:warning=                                      ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:47:1: note: 'HMAC_Final' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int HMAC_Final(HMAC_CTX *ctx, unsigned char *md,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/mac.c:361:5: warning: 'HMAC_CTX_free' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    libssh2_hmac_cleanup(&ctx);
+
+cargo:warning=    ^
+
+cargo:warning=libssh2/src/openssl.h:319:35: note: expanded from macro 'libssh2_hmac_cleanup'
+
+cargo:warning=#define libssh2_hmac_cleanup(ctx) HMAC_CTX_free(*(ctx))
+
+cargo:warning=                                  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/hmac.h:35:1: note: 'HMAC_CTX_free' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void HMAC_CTX_free(HMAC_CTX *ctx);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=35 warnings generated.
+
+cargo:warning=1 warning generated.
+
+running: env -u IPHONEOS_DEPLOYMENT_TARGET "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "-arch" "arm64" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include" "-I" "libssh2/src" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build" "-I" "/opt/homebrew/opt/openssl@3/include" "-fvisibility=hidden" "-DHAVE_LONGLONG" "-DHAVE_SNPRINTF" "-DHAVE_UNISTD_H" "-DHAVE_INTTYPES_H" "-DHAVE_STDLIB_H" "-DHAVE_SYS_SELECT_H" "-DHAVE_SYS_SOCKET_H" "-DHAVE_SYS_IOCTL_H" "-DHAVE_SYS_TIME_H" "-DHAVE_SYS_UN_H" "-DHAVE_O_NONBLOCK" "-DLIBSSH2_OPENSSL" "-DHAVE_LIBCRYPT32" "-DHAVE_EVP_AES_128_CTR" "-DHAVE_POLL" "-DHAVE_GETTIMEOFDAY" "-DLIBSSH2_DH_GEX_NEW" "-DLIBSSH2_HAVE_ZLIB" "-DLIBSSH2DEBUG" "-o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/sftp.o" "-c" "libssh2/src/sftp.c"
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+running: env -u IPHONEOS_DEPLOYMENT_TARGET "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "-arch" "arm64" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include" "-I" "libssh2/src" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build" "-I" "/opt/homebrew/opt/openssl@3/include" "-fvisibility=hidden" "-DHAVE_LONGLONG" "-DHAVE_SNPRINTF" "-DHAVE_UNISTD_H" "-DHAVE_INTTYPES_H" "-DHAVE_STDLIB_H" "-DHAVE_SYS_SELECT_H" "-DHAVE_SYS_SOCKET_H" "-DHAVE_SYS_IOCTL_H" "-DHAVE_SYS_TIME_H" "-DHAVE_SYS_UN_H" "-DHAVE_O_NONBLOCK" "-DLIBSSH2_OPENSSL" "-DHAVE_LIBCRYPT32" "-DHAVE_EVP_AES_128_CTR" "-DHAVE_POLL" "-DHAVE_GETTIMEOFDAY" "-DLIBSSH2_DH_GEX_NEW" "-DLIBSSH2_HAVE_ZLIB" "-DLIBSSH2DEBUG" "-o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/transport.o" "-c" "libssh2/src/transport.c"
+running: env -u IPHONEOS_DEPLOYMENT_TARGET "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "-arch" "arm64" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include" "-I" "libssh2/src" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build" "-I" "/opt/homebrew/opt/openssl@3/include" "-fvisibility=hidden" "-DHAVE_LONGLONG" "-DHAVE_SNPRINTF" "-DHAVE_UNISTD_H" "-DHAVE_INTTYPES_H" "-DHAVE_STDLIB_H" "-DHAVE_SYS_SELECT_H" "-DHAVE_SYS_SOCKET_H" "-DHAVE_SYS_IOCTL_H" "-DHAVE_SYS_TIME_H" "-DHAVE_SYS_UN_H" "-DHAVE_O_NONBLOCK" "-DLIBSSH2_OPENSSL" "-DHAVE_LIBCRYPT32" "-DHAVE_EVP_AES_128_CTR" "-DHAVE_POLL" "-DHAVE_GETTIMEOFDAY" "-DLIBSSH2_DH_GEX_NEW" "-DLIBSSH2_HAVE_ZLIB" "-DLIBSSH2DEBUG" "-o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/userauth.o" "-c" "libssh2/src/userauth.c"
+running: env -u IPHONEOS_DEPLOYMENT_TARGET "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "-arch" "arm64" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include" "-I" "libssh2/src" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build" "-I" "/opt/homebrew/opt/openssl@3/include" "-fvisibility=hidden" "-DHAVE_LONGLONG" "-DHAVE_SNPRINTF" "-DHAVE_UNISTD_H" "-DHAVE_INTTYPES_H" "-DHAVE_STDLIB_H" "-DHAVE_SYS_SELECT_H" "-DHAVE_SYS_SOCKET_H" "-DHAVE_SYS_IOCTL_H" "-DHAVE_SYS_TIME_H" "-DHAVE_SYS_UN_H" "-DHAVE_O_NONBLOCK" "-DLIBSSH2_OPENSSL" "-DHAVE_LIBCRYPT32" "-DHAVE_EVP_AES_128_CTR" "-DHAVE_POLL" "-DHAVE_GETTIMEOFDAY" "-DLIBSSH2_DH_GEX_NEW" "-DLIBSSH2_HAVE_ZLIB" "-DLIBSSH2DEBUG" "-o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/userauth_kbd_packet.o" "-c" "libssh2/src/userauth_kbd_packet.c"
+running: env -u IPHONEOS_DEPLOYMENT_TARGET "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "-arch" "arm64" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/include" "-I" "libssh2/src" "-I" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build" "-I" "/opt/homebrew/opt/openssl@3/include" "-fvisibility=hidden" "-DHAVE_LONGLONG" "-DHAVE_SNPRINTF" "-DHAVE_UNISTD_H" "-DHAVE_INTTYPES_H" "-DHAVE_STDLIB_H" "-DHAVE_SYS_SELECT_H" "-DHAVE_SYS_SOCKET_H" "-DHAVE_SYS_IOCTL_H" "-DHAVE_SYS_TIME_H" "-DHAVE_SYS_UN_H" "-DHAVE_O_NONBLOCK" "-DLIBSSH2_OPENSSL" "-DHAVE_LIBCRYPT32" "-DHAVE_EVP_AES_128_CTR" "-DHAVE_POLL" "-DHAVE_GETTIMEOFDAY" "-DLIBSSH2_DH_GEX_NEW" "-DLIBSSH2_HAVE_ZLIB" "-DLIBSSH2DEBUG" "-o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/openssl.o" "-c" "libssh2/src/openssl.c"
+cargo:warning=libssh2/src/openssl.c:131:12: warning: 'RSA_new' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    *rsa = RSA_new();
+
+cargo:warning=           ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/rsa.h:212:1: note: 'RSA_new' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 RSA *RSA_new(void);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:133:5: warning: 'RSA_set0_key' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    RSA_set0_key(*rsa, n, e, d);
+
+cargo:warning=    ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/rsa.h:218:1: note: 'RSA_set0_key' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int RSA_set0_key(RSA *r, BIGNUM *n, BIGNUM *e, BIGNUM *d);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:141:5: warning: 'RSA_set0_factors' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    RSA_set0_factors(*rsa, p, q);
+
+cargo:warning=    ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/rsa.h:219:1: note: 'RSA_set0_factors' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int RSA_set0_factors(RSA *r, BIGNUM *p, BIGNUM *q);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:148:5: warning: 'RSA_set0_crt_params' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    RSA_set0_crt_params(*rsa, dmp1, dmq1, iqmp);
+
+cargo:warning=    ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/rsa.h:220:1: note: 'RSA_set0_crt_params' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int RSA_set0_crt_params(RSA *r,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:191:11: warning: 'RSA_verify' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    ret = RSA_verify(nid_type, hash, hash_len,
+
+cargo:warning=          ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/rsa.h:362:1: note: 'RSA_verify' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int RSA_verify(int type, const unsigned char *m,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:245:15: warning: 'DSA_new' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    *dsactx = DSA_new();
+
+cargo:warning=              ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/dsa.h:130:1: note: 'DSA_new' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 DSA *DSA_new(void);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:248:5: warning: 'DSA_set0_pqg' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    DSA_set0_pqg(*dsactx, p_bn, q_bn, g_bn);
+
+cargo:warning=    ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/dsa.h:208:1: note: 'DSA_set0_pqg' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int DSA_set0_pqg(DSA *d, BIGNUM *p, BIGNUM *q, BIGNUM *g);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:256:5: warning: 'DSA_set0_key' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    DSA_set0_key(*dsactx, pub_key, priv_key);
+
+cargo:warning=    ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/dsa.h:211:1: note: 'DSA_set0_key' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int DSA_set0_key(DSA *d, BIGNUM *pub_key,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:289:15: warning: 'DSA_do_verify' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        ret = DSA_do_verify(hash, SHA_DIGEST_LENGTH, dsasig, dsactx);
+
+cargo:warning=              ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/dsa.h:120:1: note: 'DSA_do_verify' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int DSA_do_verify(const unsigned char *dgst, int dgst_len,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:308:29: warning: 'EC_KEY_get0_group' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    const EC_GROUP *group = EC_KEY_get0_group(ec_ctx);
+
+cargo:warning=                            ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/ec.h:1053:1: note: 'EC_KEY_get0_group' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 const EC_GROUP *EC_KEY_get0_group(const EC_KEY *key);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:359:22: warning: 'EC_KEY_new_by_curve_name' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    EC_KEY *ec_key = EC_KEY_new_by_curve_name(curve);
+
+cargo:warning=                     ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/ec.h:1017:1: note: 'EC_KEY_new_by_curve_name' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 EC_KEY *EC_KEY_new_by_curve_name(int nid);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:363:20: warning: 'EC_KEY_get0_group' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        ec_group = EC_KEY_get0_group(ec_key);
+
+cargo:warning=                   ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/ec.h:1053:1: note: 'EC_KEY_get0_group' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 const EC_GROUP *EC_KEY_get0_group(const EC_KEY *key);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:366:15: warning: 'EC_KEY_set_public_key' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        ret = EC_KEY_set_public_key(ec_key, point);
+
+cargo:warning=              ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/ec.h:1089:1: note: 'EC_KEY_set_public_key' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int EC_KEY_set_public_key(EC_KEY *key, const EC_POINT *pub);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:416:9: warning: 'ECDSA_do_verify' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        LIBSSH2_ECDSA_VERIFY(256);
+
+cargo:warning=        ^
+
+cargo:warning=libssh2/src/openssl.c:382:11: note: expanded from macro 'LIBSSH2_ECDSA_VERIFY'
+
+cargo:warning=    ret = ECDSA_do_verify(hash, SHA##digest_type##_DIGEST_LENGTH,   \
+
+cargo:warning=          ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/ec.h:1410:1: note: 'ECDSA_do_verify' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int ECDSA_do_verify(const unsigned char *dgst, int dgst_len,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:419:9: warning: 'ECDSA_do_verify' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        LIBSSH2_ECDSA_VERIFY(384);
+
+cargo:warning=        ^
+
+cargo:warning=libssh2/src/openssl.c:382:11: note: expanded from macro 'LIBSSH2_ECDSA_VERIFY'
+
+cargo:warning=    ret = ECDSA_do_verify(hash, SHA##digest_type##_DIGEST_LENGTH,   \
+
+cargo:warning=          ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/ec.h:1410:1: note: 'ECDSA_do_verify' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int ECDSA_do_verify(const unsigned char *dgst, int dgst_len,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:422:9: warning: 'ECDSA_do_verify' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        LIBSSH2_ECDSA_VERIFY(512);
+
+cargo:warning=        ^
+
+cargo:warning=libssh2/src/openssl.c:382:11: note: expanded from macro 'LIBSSH2_ECDSA_VERIFY'
+
+cargo:warning=    ret = ECDSA_do_verify(hash, SHA##digest_type##_DIGEST_LENGTH,   \
+
+cargo:warning=          ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/ec.h:1410:1: note: 'ECDSA_do_verify' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int ECDSA_do_verify(const unsigned char *dgst, int dgst_len,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:689:5: warning: 'ENGINE_load_builtin_engines' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    ENGINE_load_builtin_engines();
+
+cargo:warning=    ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/engine.h:358:1: note: 'ENGINE_load_builtin_engines' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void ENGINE_load_builtin_engines(void);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:690:5: warning: 'ENGINE_register_all_complete' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    ENGINE_register_all_complete();
+
+cargo:warning=    ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/engine.h:415:1: note: 'ENGINE_register_all_complete' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int ENGINE_register_all_complete(void);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:807:30: warning: 'PEM_read_bio_RSAPrivateKey' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        (pem_read_bio_func) &PEM_read_bio_RSAPrivateKey;
+
+cargo:warning=                             ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/pem.h:451:24: note: 'PEM_read_bio_RSAPrivateKey' has been explicitly marked deprecated here
+
+cargo:warning=DECLARE_PEM_rw_cb_attr(OSSL_DEPRECATEDIN_3_0, RSAPrivateKey, RSA)
+
+cargo:warning=                       ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:833:5: warning: 'RSA_get0_key' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    RSA_get0_key(rsa, &n, &e, NULL);
+
+cargo:warning=    ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/rsa.h:228:1: note: 'RSA_get0_key' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void RSA_get0_key(const RSA *r,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:881:11: warning: 'EVP_PKEY_get1_RSA' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    rsa = EVP_PKEY_get1_RSA(pk);
+
+cargo:warning=          ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/evp.h:1355:1: note: 'EVP_PKEY_get1_RSA' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:896:5: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    RSA_free(rsa);
+
+cargo:warning=    ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:907:9: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        RSA_free(rsa);
+
+cargo:warning=        ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:930:5: warning: 'RSA_get0_key' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    RSA_get0_key(rsa, NULL, NULL, &d);
+
+cargo:warning=    ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/rsa.h:228:1: note: 'RSA_get0_key' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void RSA_get0_key(const RSA *r,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:931:5: warning: 'RSA_get0_factors' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    RSA_get0_factors(rsa, &p, &q);
+
+cargo:warning=    ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/rsa.h:231:1: note: 'RSA_get0_factors' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void RSA_get0_factors(const RSA *r,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:969:5: warning: 'RSA_set0_crt_params' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    RSA_set0_crt_params(rsa, dmp1, dmq1, NULL);
+
+cargo:warning=    ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/rsa.h:220:1: note: 'RSA_set0_crt_params' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int RSA_set0_crt_params(RSA *r,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:1066:9: warning: 'EVP_PKEY_set1_RSA' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        EVP_PKEY_set1_RSA(pk, rsa);
+
+cargo:warning=        ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/evp.h:1351:1: note: 'EVP_PKEY_set1_RSA' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:1079:9: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        RSA_free(rsa);
+
+cargo:warning=        ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:1086:9: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        RSA_free(rsa);
+
+cargo:warning=        ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:1157:30: warning: 'PEM_read_bio_RSAPrivateKey' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        (pem_read_bio_func) &PEM_read_bio_RSAPrivateKey;
+
+cargo:warning=                             ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/pem.h:451:24: note: 'PEM_read_bio_RSAPrivateKey' has been explicitly marked deprecated here
+
+cargo:warning=DECLARE_PEM_rw_cb_attr(OSSL_DEPRECATEDIN_3_0, RSAPrivateKey, RSA)
+
+cargo:warning=                       ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:1182:30: warning: 'PEM_read_bio_DSAPrivateKey' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        (pem_read_bio_func) &PEM_read_bio_DSAPrivateKey;
+
+cargo:warning=                             ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/pem.h:457:24: note: 'PEM_read_bio_DSAPrivateKey' has been explicitly marked deprecated here
+
+cargo:warning=DECLARE_PEM_rw_cb_attr(OSSL_DEPRECATEDIN_3_0, DSAPrivateKey, DSA)
+
+cargo:warning=                       ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:1211:5: warning: 'DSA_get0_pqg' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    DSA_get0_pqg(dsa, &p_bn, &q, &g);
+
+cargo:warning=    ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/dsa.h:206:1: note: 'DSA_get0_pqg' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void DSA_get0_pqg(const DSA *d, const BIGNUM **p,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:1219:5: warning: 'DSA_get0_key' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    DSA_get0_key(dsa, &pub_key, NULL);
+
+cargo:warning=    ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/dsa.h:209:1: note: 'DSA_get0_key' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void DSA_get0_key(const DSA *d, const BIGNUM **pub_key,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:1270:11: warning: 'EVP_PKEY_get1_DSA' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    dsa = EVP_PKEY_get1_DSA(pk);
+
+cargo:warning=          ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/evp.h:1364:1: note: 'EVP_PKEY_get1_DSA' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:1285:5: warning: 'DSA_free' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    DSA_free(dsa);
+
+cargo:warning=    ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/dsa.h:132:1: note: 'DSA_free' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void DSA_free(DSA *r);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:1296:9: warning: 'DSA_free' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        DSA_free(dsa);
+
+cargo:warning=        ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/dsa.h:132:1: note: 'DSA_free' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void DSA_free(DSA *r);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:1366:9: warning: 'EVP_PKEY_set1_DSA' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        EVP_PKEY_set1_DSA(pk, dsa);
+
+cargo:warning=        ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/evp.h:1360:1: note: 'EVP_PKEY_set1_DSA' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:1379:9: warning: 'DSA_free' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        DSA_free(dsa);
+
+cargo:warning=        ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/dsa.h:132:1: note: 'DSA_free' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void DSA_free(DSA *r);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:1386:9: warning: 'DSA_free' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        DSA_free(dsa);
+
+cargo:warning=        ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/dsa.h:132:1: note: 'DSA_free' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void DSA_free(DSA *r);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:1457:30: warning: 'PEM_read_bio_DSAPrivateKey' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        (pem_read_bio_func) &PEM_read_bio_DSAPrivateKey;
+
+cargo:warning=                             ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/pem.h:457:24: note: 'PEM_read_bio_DSAPrivateKey' has been explicitly marked deprecated here
+
+cargo:warning=DECLARE_PEM_rw_cb_attr(OSSL_DEPRECATEDIN_3_0, DSAPrivateKey, DSA)
+
+cargo:warning=                       ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:1485:30: warning: 'PEM_read_bio_ECPrivateKey' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        (pem_read_bio_func) &PEM_read_bio_ECPrivateKey;
+
+cargo:warning=                             ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/pem.h:466:24: note: 'PEM_read_bio_ECPrivateKey' has been explicitly marked deprecated here
+
+cargo:warning=DECLARE_PEM_rw_cb_attr(OSSL_DEPRECATEDIN_3_0, ECPrivateKey, EC_KEY)
+
+cargo:warning=                       ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:1919:15: warning: 'RSA_size' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    sig_len = RSA_size(rsactx);
+
+cargo:warning=              ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/rsa.h:215:1: note: 'RSA_size' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int RSA_size(const RSA *rsa);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:1927:15: warning: 'RSA_sign' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        ret = RSA_sign(NID_sha1, hash, hash_len, sig, &sig_len, rsactx);
+
+cargo:warning=              ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/rsa.h:359:1: note: 'RSA_sign' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int RSA_sign(int type, const unsigned char *m,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:1929:15: warning: 'RSA_sign' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        ret = RSA_sign(NID_sha256, hash, hash_len, sig, &sig_len, rsactx);
+
+cargo:warning=              ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/rsa.h:359:1: note: 'RSA_sign' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int RSA_sign(int type, const unsigned char *m,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:1931:15: warning: 'RSA_sign' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        ret = RSA_sign(NID_sha512, hash, hash_len, sig, &sig_len, rsactx);
+
+cargo:warning=              ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/rsa.h:359:1: note: 'RSA_sign' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int RSA_sign(int type, const unsigned char *m,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:1974:11: warning: 'DSA_do_sign' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    sig = DSA_do_sign(hash, SHA_DIGEST_LENGTH, dsactx);
+
+cargo:warning=          ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/dsa.h:118:1: note: 'DSA_do_sign' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 DSA_SIG *DSA_do_sign(const unsigned char *dgst, int dlen,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:2022:22: warning: 'ECDSA_do_sign' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    ECDSA_SIG *sig = ECDSA_do_sign(hash, hash_len, ec_ctx);
+
+cargo:warning=                     ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/ec.h:1384:1: note: 'ECDSA_do_sign' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 ECDSA_SIG *ECDSA_do_sign(const unsigned char *dgst,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:2344:10: warning: 'EVP_PKEY_get1_EC_KEY' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    ec = EVP_PKEY_get1_EC_KEY(pk);
+
+cargo:warning=         ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/evp.h:1381:1: note: 'EVP_PKEY_get1_EC_KEY' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:2350:18: warning: 'EC_KEY_get0_public_key' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    public_key = EC_KEY_get0_public_key(ec);
+
+cargo:warning=                 ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/ec.h:1081:1: note: 'EC_KEY_get0_public_key' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 const EC_POINT *EC_KEY_get0_public_key(const EC_KEY *key);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:2351:13: warning: 'EC_KEY_get0_group' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    group = EC_KEY_get0_group(ec);
+
+cargo:warning=            ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/ec.h:1053:1: note: 'EC_KEY_get0_group' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 const EC_GROUP *EC_KEY_get0_group(const EC_KEY *key);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:2425:9: warning: 'EC_KEY_free' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        EC_KEY_free(ec);
+
+cargo:warning=        ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/ec.h:1022:1: note: 'EC_KEY_free' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void EC_KEY_free(EC_KEY *key);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:2499:11: warning: 'EC_KEY_set_private_key' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    rc = (EC_KEY_set_private_key(ec_key, bn_exponent) != 1);
+
+cargo:warning=          ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/ec.h:1075:1: note: 'EC_KEY_set_private_key' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int EC_KEY_set_private_key(EC_KEY *key, const BIGNUM *prv);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:2503:9: warning: 'EVP_PKEY_set1_EC_KEY' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        EVP_PKEY_set1_EC_KEY(pk, ec_key);
+
+cargo:warning=        ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/evp.h:1377:1: note: 'EVP_PKEY_set1_EC_KEY' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:2516:9: warning: 'EC_KEY_free' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        EC_KEY_free(ec_key);
+
+cargo:warning=        ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/ec.h:1022:1: note: 'EC_KEY_free' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void EC_KEY_free(EC_KEY *key);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:2522:9: warning: 'EC_KEY_free' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=        EC_KEY_free(ec_key);
+
+cargo:warning=        ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/ec.h:1022:1: note: 'EC_KEY_free' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 void EC_KEY_free(EC_KEY *key);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:2593:54: warning: 'PEM_read_bio_ECPrivateKey' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    pem_read_bio_func read_ec = (pem_read_bio_func) &PEM_read_bio_ECPrivateKey;
+
+cargo:warning=                                                     ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/pem.h:466:24: note: 'PEM_read_bio_ECPrivateKey' has been explicitly marked deprecated here
+
+cargo:warning=DECLARE_PEM_rw_cb_attr(OSSL_DEPRECATEDIN_3_0, ECPrivateKey, EC_KEY)
+
+cargo:warning=                       ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:2635:19: warning: 'EC_KEY_new_by_curve_name' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    private_key = EC_KEY_new_by_curve_name(curve_type);
+
+cargo:warning=                  ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/ec.h:1017:1: note: 'EC_KEY_new_by_curve_name' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 EC_KEY *EC_KEY_new_by_curve_name(int nid);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:2636:13: warning: 'EC_KEY_get0_group' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    group = EC_KEY_get0_group(private_key);
+
+cargo:warning=            ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/ec.h:1053:1: note: 'EC_KEY_get0_group' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 const EC_GROUP *EC_KEY_get0_group(const EC_KEY *key);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:2638:5: warning: 'EC_KEY_generate_key' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    EC_KEY_generate_key(private_key);
+
+cargo:warning=    ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/ec.h:1120:1: note: 'EC_KEY_generate_key' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int EC_KEY_generate_key(EC_KEY *key);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:2639:18: warning: 'EC_KEY_get0_public_key' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    public_key = EC_KEY_get0_public_key(private_key);
+
+cargo:warning=                 ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/ec.h:1081:1: note: 'EC_KEY_get0_public_key' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 const EC_POINT *EC_KEY_get0_public_key(const EC_KEY *key);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:2706:25: warning: 'EC_KEY_get0_group' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    private_key_group = EC_KEY_get0_group(private_key);
+
+cargo:warning=                        ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/ec.h:1053:1: note: 'EC_KEY_get0_group' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 const EC_GROUP *EC_KEY_get0_group(const EC_KEY *key);
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=libssh2/src/openssl.c:2726:18: warning: 'ECDH_compute_key' is deprecated [-Wdeprecated-declarations]
+
+cargo:warning=    secret_len = ECDH_compute_key(secret, secret_len, server_public_key_point,
+
+cargo:warning=                 ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/ec.h:1315:1: note: 'ECDH_compute_key' has been explicitly marked deprecated here
+
+cargo:warning=OSSL_DEPRECATEDIN_3_0 int ECDH_compute_key(void *out, size_t outlen,
+
+cargo:warning=^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:194:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+
+cargo:warning=#   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+
+cargo:warning=                                                ^
+
+cargo:warning=/opt/homebrew/opt/openssl@3/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+
+cargo:warning=#     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+
+cargo:warning=                                                   ^
+
+cargo:warning=62 warnings generated.
+
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+cargo:rerun-if-env-changed=AR_aarch64-apple-darwin
+AR_aarch64-apple-darwin = None
+cargo:rerun-if-env-changed=AR_aarch64_apple_darwin
+AR_aarch64_apple_darwin = None
+cargo:rerun-if-env-changed=HOST_AR
+HOST_AR = None
+cargo:rerun-if-env-changed=AR
+AR = None
+cargo:rerun-if-env-changed=ARFLAGS_aarch64-apple-darwin
+ARFLAGS_aarch64-apple-darwin = None
+cargo:rerun-if-env-changed=ARFLAGS_aarch64_apple_darwin
+ARFLAGS_aarch64_apple_darwin = None
+cargo:rerun-if-env-changed=HOST_ARFLAGS
+HOST_ARFLAGS = None
+cargo:rerun-if-env-changed=ARFLAGS
+ARFLAGS = None
+running: ZERO_AR_DATE="1" "ar" "cq" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2.a" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/agent.o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/bcrypt_pbkdf.o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/blowfish.o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/channel.o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/comp.o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/crypt.o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/global.o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/hostkey.o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/keepalive.o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/kex.o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/knownhost.o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/mac.o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/misc.o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/packet.o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/pem.o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/publickey.o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/scp.o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/session.o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/sftp.o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/transport.o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/userauth.o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/userauth_kbd_packet.o" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2/src/openssl.o"
+exit status: 0
+running: "ar" "s" "/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build/libssh2.a"
+exit status: 0
+cargo:rustc-link-lib=static=ssh2
+cargo:rustc-link-search=native=/Users/nwiizo/git/workspace_2024/git-rs/target/debug/build/libssh2-sys-f538d0246ad22a0c/out/build
