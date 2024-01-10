@@ -44,6 +44,6 @@
    - [ ] Only read manga on the 1st of every month.
    - [ ] Find alternative activities for leisure, like listening to podcasts or music.
 
-2. **Focus on Golang:**
-   - [ ] Refrain from starting new projects in languages other than Golang.
-   - [ ] Utilize time to deepen knowledge and skills in Golang.
+2. **Focus on Golang or Rust:**
+   - [ ] Refrain from starting new projects in languages other than Golang or Rust.
+   - [ ] Utilize time to deepen knowledge and skills in Golang or Rust.
