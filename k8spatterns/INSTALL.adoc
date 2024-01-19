@@ -1,0 +1,273 @@
+== Prerequisites for running the examples
+
+This document describes various installation options for Kubernetes and extensions which we are using in the pattern examples.
+All examples has been tested with <<minikube>> thoroughly, but should also work without change on the other installation options.
+
+Content:
+
+* <<minikube, Minikube>>
+* <<cloud, Kubernetes in the cloud>>
+* <<kubernetes-playground, Kubernetes Playgrounds>>
+* <<kubectl-curl-jq, CLI:  kubectl, curl and jq>>
+* <<minishift, Minishift>>
+* <<knative, Knative>>
+
+[[minikube]]
+=== Minikube
+
+https://github.com/kubernetes/minikube[minikube] is recommended not only for trying out theses examples but also for an easy and simple to use Kubernetes setup in general.
+
+You can download Minikube from ....
+Essentially, Minikube is a CLI tool for starting a virtual machine with a Docker daemon and a single node Kubernetes cluster.
+
+To start Minikube you just call
+
+[source, bash]
+----
+minikube start
+----
+
+NOTE: When running on Mac with an M1 or M2 chip, for the best experience it is recommended to use Docker as the underlying virtualization platform instead of the default of `qemu2`. It allows for better networking and tunneling for the examples that involved networking. You can chose the Docker driver with the option `--driver docker` or set it permanently with `minikube config set driver docker`. Of course, for this to work, you need to have Docker Desktop installed locally.
+
+If you do this for the first time Minikube will download all required files and starts a VM whose default runtime depends on your operating system and installation options.
+
+Some of the examples use an `Ingress` object to export a service to the outside.
+For Minikube you have to enable ingress support with:
+
+[source, bash]
+----
+minikube addons enable ingress
+----
+
+Otherwise, the pure Kubernetes examples should work out of the box with the default options of Minikube.
+
+If you want to optimise Minikube, use  `minikube start --help` for all options available for starting Minikube.
+
+The most important options are
+
+`--memory`::
+  Set the heap memory of the VM. The default of 2048 is sometimes too less, especially when using more advanced deployments. Use 4096 (or even 8192) to be on the safe side.
+
+`--vm-driver`::
+  Use this option if you want to change the VM to use, because the default choice doesn't works for you. Check `minikube start --help | grep vm-driver` to find out the possible options.
+
+`--disk-size`::
+  Size of the VM's hard drive. The default of 20 GB might be too small if you use many images or too large if you only want to use Minikube for our examples.
+
+You can easily access the Docker daemon running within the Minikube VM by using:
+
+[source, bash]
+----
+eval $(minikube docker-env)
+----
+
+Now you can just use the Docker CLI `docker` as usual.
+
+There are many more features to explore (like ssh-ing into the VM, exposing Services via NodePort, port-forwarding to Pods e.g. for remote debugging and more)
+Please consult the Minikube documentation for details.
+
+[[kind]]
+=== Kind
+
+An alternative to `minikube` is `kind`, which can also be used to simulate a multi-node cluster on your Desktop.
+
+`kind` (Kubernetes in Docker) is a tool for running local Kubernetes clusters using Docker container nodes. It's often used for development and testing purposes. You can easily create a multinode cluster with kind by defining a configuration file that specifies the desired number of control-plane and worker nodes.
+
+Here's a step-by-step guide to creating a multinode cluster with kind:
+
+Install kind and Docker::
+First, make sure you have Docker installed. You can follow the installation instructions for your platform from the official Docker website: https://docs.docker.com/get-docker/. Next, install kind. You can follow the installation instructions from the kind GitHub repository: https://github.com/kubernetes-sigs/kind#installation-and-usage
+
+Create a configuration file::
+Create a new YAML file, for example, `kind-multinode.yaml`, and configure the desired number of control-plane and worker nodes. The following example creates a cluster with one control-plane node and two worker nodes:
+[source,yaml]
+----
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+- role: worker
+- role: worker
+----
+
+Create the cluster::
+Use the `kind create cluster` command with the `--config` flag to create the cluster using your configuration file:
+[source,shell]
+----
+kind create cluster --config kind-multinode.yaml
+----
+
+Check the cluster status:: After the cluster is created, you can check its status using `kubectl`:
+[source,shell]
+----
+kubectl cluster-info
+----
+
+When you're done with the cluster, you can delete it using the `kind delete cluster` command:
+
+[source,shell]
+----
+kind delete cluster
+----
+
+[[cloud]]
+=== Kubernetes in the Cloud
+
+There are many options you can get your hands on a managed Kubernetes cluster provided by a cloud Provider.
+Most of the offerings also have a time-limited tier to try things out.
+This would be an ideal playground for the more advanced patterns which involve multiple nodes and can not be easily tested on a single node cluster like Minikube.
+
+Here's a list of Kubernetes cloud offerings, which is very likely not complete footnote:[Feel free to open a pull request adding more to this list]:
+
+https://cloud.google.com/kubernetes-engine/[Google Kubernetes Engine] (GKE)::
+  For new users Google provides a free budget for a certain time period so that you can easily try things out.
+https://docs.microsoft.com/en-us/azure/aks/[Azure Kubernetes Service] (AKS)::
+  Managed Kubernetes Cluster by Microsoft
+https://aws.amazon.com/eks/[Elastic Container Service] (EKS)::
+  Kubernetes on Amazon Web Services (AWS)
+https://www.digitalocean.com/products/kubernetes/[Kubernetes on Digital Ocean]::
+  Managed Kubernetes cluster provided by Digital Ocean
+
+[[kubernetes-playground]]
+=== Kubernetes playgrounds
+
+ALternatively you can also try out these examples on these playgrounds:
+
+https://www.katacoda.com/courses/kubernetes/playground[Kubernetes Playground]::
+  Fully pre-installed Kubernetes playground provided by Katacoda (you can also use `k` instead of `kubectl` in the terminal).
+https://labs.play-with-k8s.com/[Play with Kubernetes]::
+  Playground for setting up a Kubernetes cluster, provided by Tutorius. More about how to learn installing Kubernetes, but then can be used for our examples, too.
+
+For a quick setup experience we recommend Katacoda's https://www.katacoda.com/courses/kubernetes/playground[Kubernetes Playground].
+It provides a two node cluster, so we can try out 'real' cluster examples here which are not possible with Minikube.
+If you try out the samples with this playground, we recommend to checkout these examples with `git clone https://github.com/k8spatterns/examples.git` before starting.
+
+[[kubectl-curl-jq]]
+=== CLI: kubectl, curl, jq
+
+Kubectl is the CLI client used to access any Kubernetes cluster.
+Installation instructions for kubectl can be found on the  https://kubernetes.io/docs/tasks/tools/install-kubectl/[Kubernetes site].
+Pick the variant matching your operating system and put it into your execution path.
+Most of the time you don't have to update `kubectl` when you update your cluster as older kubectl version typically also work nicely with newer clusters.
+
+We recommend to set a shell alias like *k* to shorten `kubectl` in the command line because you have to type it quite often.
+
+
+Other tools which are used in the examples:
+
+* https://curl.haxx.se/[curl] for accessing services via HTTP (you can use any other client, of course, too)
+* https://stedolan.github.io/jq/[jq] for visualizing JSON results
+
+Some other handy aliases and functions:
+
+[source, bash]
+----
+# Shorten kubectl to k
+alias k=kubectl
+
+# Get a pod by only providing a partial name
+function pod {
+  kubectl get pod -o name | grep -v "Terminating" | grep $1 | sed -e "s/^pods\///"
+}
+
+# Get the nodePort of first port mapping of a service
+function svc_node_port {
+  kubectl get svc $1 -o jsonpath={.spec.ports[0].nodePort}
+}
+
+# Change the current context (e.g. 'k8s_context minikube')
+function k8s_context {
+   kubectl config use-context $1
+}
+
+# Watch periodically all pods
+function k8s_watch {
+  watch kubectl get pods
+}
+
+# Add command line completion for your shell. Replace 'zsh' with your shell.
+source <(kubectl completion zsh)
+----
+
+[[minishift]]
+=== Minishift (OpenShift examples)
+
+Minishift is the OpenShift equivalent to Minikube.
+
+It can be downloaded from the [Minishift release page]
+
+Minishift is very similar to Minikube and shares a similar set of commands.
+For example, to startup Minishift just use `minishift start`, too.
+
+Nearly every Minikube option is available for Minishift, too.
+
+There are some additional commands which you can leverage:
+
+minishift oc-env::
+  This command can be evale to set the PATH to an `oc` binary, which is OpenShift equivalent to `kubectl`
+minishift console::
+  Open the OpenShift console
+minishift openshift service::
+  The equivalent to `minikube service`, i.e. list services and their exposed URLs
+
+[[knative]]
+=== Knative
+
+For installing Knative on your own, you have several options.
+These are described directly on the https://github.com/knative/docs/tree/master/install[Knative GitHub repository].
+
+For a `minikube` based installation, just follow these https://github.com/knative/docs/blob/master/install/Knative-with-Minikube.md[instructions].
+
+For our example of link:./advanced/ImageBuilder/knative/README.adoc[Knative build] we need these installations steps:
+
+* Startup minikube with the appropriate options.
+* Install Istio
+* Install Knative serving
+* Install Knative build (as described [here])
+
+In short the following commands will setup your installation.
+Please wait after each step that all new pods has been settled.
+In case of any problems, please refer to the installation instructions for https://github.com/knative/docs/tree/master/install[Knative serving] and [Knative build].
+
+[source, bash]
+----
+# Install minikube
+minikube start --memory=8192 --cpus=4 \
+  --kubernetes-version=v1.11.5 \
+  --vm-driver=hyperkit \
+  --disk-size=30g \
+  --extra-config=apiserver.enable-admission-plugins="LimitRanger,NamespaceExists,NamespaceLifecycle,ResourceQuota,ServiceAccount,DefaultStorageClass,MutatingAdmissionWebhook"
+
+# Install istio
+# (note that there are some errors like "unable to recognize ..." at the end of the output,
+# but this seems to be harmless)
+curl -L https://github.com/knative/serving/releases/download/v0.3.0/istio.yaml \
+  | sed 's/LoadBalancer/NodePort/' \
+  | kubectl apply --filename -
+
+# Label the default namespace with istio-injection=enabled.
+kubectl label namespace default istio-injection=enabled
+
+# Wait until all istio pods are up
+sleep 60
+kubectl get pods --namespace istio-system
+
+# Install Knative serving
+# (with similar warnings as for the Istio installations, potentially harmless)
+curl -L https://github.com/knative/serving/releases/download/v0.3.0/serving.yaml \
+  | sed 's/LoadBalancer/NodePort/' \
+  | kubectl apply --filename -
+
+# Wait until knative-serving pods are up
+sleep 60
+kubectl get pods --namespace knative-serving
+
+# Install Knative build
+kubectl apply --filename https://storage.googleapis.com/knative-releases/build/latest/release.yaml
+
+# Wait until knative-build is up and running
+sleep 60
+kubectl get pods --namespace knative-build
+----
+
+As an alternative to a Minikube installation you can also use the free offering from Instruqt for experimenting with Knative with their https://instruqt.com/public/topics/knative[Knative tutorials].

@@ -1,0 +1,42 @@
+# Deployment for random-generator service for starting up the random-generator
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: random-generator
+spec:
+  replicas: 6
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: random-generator
+  template:
+    metadata:
+      labels:
+        app: random-generator
+    spec:
+      containers:
+      - image: k8spatterns/random-generator:1.0
+        name: random-generator
+        env:
+        # Tell random-generator to wait 5 seconds when starting up
+        - name: DELAY_STARTUP
+          value: "5"
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 20
+        readinessProbe:
+          # We are checking for a file created by our app when its ready
+          exec:
+            command: [ "stat", "/tmp/random-generator-ready" ]
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+      # Allow scheduling also on the master nodes, which typically is tainted
+      # for no-schedule
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        operator: Exists
+        effect: NoSchedule

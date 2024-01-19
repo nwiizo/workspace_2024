@@ -1,0 +1,27 @@
+pattern: Configuration Resource
+category: configuration
+base: configuration/ConfigurationResource
+examples:
+- description:
+  path: configmap.yml
+- description:
+  path: pod.yml
+- description:
+  path: service.yml
+links:
+- url: https://oreil.ly/-_jDa
+  title: 'Configuration Resource Example'
+- url: https://oreil.ly/oRN9a
+  title: 'Configure a Pod to Use a ConfigMap'
+- url: https://oreil.ly/mvoXO
+  title: 'Secrets'
+- url: https://oreil.ly/GrL0_
+  title: 'Encrypting Secret Data at Rest'
+- url: https://oreil.ly/Im-R9
+  title: 'Distribute Credentials Securely Using Secrets'
+- url: https://oreil.ly/9PvQ5
+  title: 'Immutable Secrets'
+- url: https://oreil.ly/ndYd0
+  title: 'How to Create Immutable ConfigMaps and Secrets'
+- url: https://oreil.ly/JUDZU
+  title: 'Size Limit for a ConfigMap'

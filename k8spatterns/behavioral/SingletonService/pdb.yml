@@ -1,0 +1,13 @@
+# Pod disruption budget
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: random-generator-pdb
+spec:
+  selector:
+    matchLabels:
+      # Used for counting active Pods for which this PDB is used
+      app: random-generator
+  # At least four need to be available all the time
+  minAvailable: 4

@@ -1,0 +1,178 @@
+== Service Discovery
+
+These examples teach you to discover and access services with _Service Discovery_.
+
+ifndef::skipInstall[]
+We are using a Minikube installation to run the examples. For details, please refer to the link:../../INSTALL.adoc#minikube[installation instructions].
+
+The examples here expect that you have an Ingress controller and a load balancer enabled. For Minikube, you can allow both with
+
+[source, bash]
+----
+minikube addons enable ingress
+----
+
+And in a separate terminal, start a https://minikube.sigs.k8s.io/docs/handbook/accessing/#loadbalancer-access[minikube tunnel]. The following call will create the tunnel in the foreground. You can stop it with `CTRL-C`.
+
+[source, bash]
+----
+minikube tunnel
+----
+endif::skipInstall[]
+
+We are using our `random-generator` application as the deployment we want to expose.
+
+So, first, we are exposing this service with four replicas:
+
+[source, bash]
+----
+kubectl apply -f https://k8spatterns.io/ServiceDiscovery/deployment.yml
+----
+
+Now let's create a simple service that dispatches to these four pods dynamically:
+
+==== Cluster-internal Service
+
+[source, bash]
+----
+kubectl apply -f https://k8spatterns.io/ServiceDiscovery/service.yml
+----
+
+This service is called ClusterIP, so only reachable from within the cluster.
+You can verify this by calling `kubectl get svc`.
+
+Let's verify that this service can be reached from within the cluster.
+For this, let's create a debug satellite Pod, wait until it's ready, and then jump into it.
+
+[source, bash]
+----
+kubectl run dbg --image=k8spatterns/curl-jq --command -- sleep infinity && \
+kubectl wait --for=condition=Ready pod/dbg && \
+kubectl exec -it dbg -- ash
+----
+
+Now do some checks:
+
+[source, bash]
+----
+# Check DNS entry
+dig random-generator.default.svc.cluster.local
+----
+
+[source, bash]
+----
+# Curl to service `random-generator.`
+curl -s http://random-generator:8080 | jq .
+----
+
+You can also check whether the service coordinates are exposed via environment variables within the pods:
+
+[source, bash]
+----
+# Check for exposed service variables in our test Pod
+env | grep RANDOM
+----
+
+Let's jump out of the debug container with the following command (or `CTRL-D`)
+
+[source, bash]
+----
+exit
+----
+
+=== Service with type NodePort
+
+After you leave the Pod, let's switch to `NodePort` as the service type.
+
+[source, bash]
+----
+# Update service to type NodePort
+kubectl apply -f https://k8spatterns.io/ServiceDiscovery/service-with-nodeport.yml
+----
+
+You can check the assigned node port with
+
+[source, bash]
+----
+kubectl get svc random-generator
+----
+
+To access the URL, we need to start another tunnel in the background and store the access URL in a temporary file.
+
+[source, bash]
+----
+minikube service random-generator --url > /tmp/random-url.txt &
+----
+
+Now we can access our service from the _outside_ of the cluster, namely from your desktop's shell:
+
+[source, bash]
+----
+# Pick the URL from the service tunnel and curl it
+curl -s $(cat /tmp/random-url.txt) | jq .
+----
+
+Stop the tunnel by bringing it back to the foreground with `fg` and then stop with `CTRL-C`.
+
+=== Service with type LoadBalancer
+
+[source, bash]
+----
+# Update service to type LoadBalancer
+kubectl apply -f https://k8spatterns.io/ServiceDiscovery/service-with-loadbalancer.yml
+----
+
+If your cluster provides a load balancer, you will get the load balancer's IP when looking at it with `kubectl get service`. Otherwise, the field `EXTERNAL IP` will stay in status _<pending>_.
+
+NOTE: As mentioned previously, for Minikube, start `minikube tunnel` to add some routing from your localhost to the Minikube IP.
+
+When Kubernetes has assigned an external IP address to your service (check with `kubectl get service`), you can query it via this IP address and the service's port:
+
+[source, bash]
+----
+# Pick port from the service definition and curl
+ip=$(kubectl get svc random-generator -o jsonpath={.status.loadBalancer.ingress[0].ip})
+curl -s http://$ip:8080 | jq .
+----
+
+=== Ingress
+
+Finally, let's have a look at an Ingress exposed service.
+
+First, we reset our service back to type `ClusterIP`:
+
+[source, bash]
+----
+kubectl delete service random-generator
+kubectl apply -f https://k8spatterns.io/ServiceDiscovery/service.yml
+----
+
+Next, let's create the `Ingress` object with
+
+[source, bash]
+----
+kubectl apply -f https://k8spatterns.io/ServiceDiscovery/ingress.yml
+----
+
+As usual, you can check the create Ingress object with `kubectl get ingress`. Note that you should now have an `ADDRESS` assigned if your cluster has an ingress controller running.
+
+Since the ingress controller is exposed on port 80, you must restart the `minikube tunnel` in the other terminal. After restart, it needs to expose a privileged port and will ask you about your administrator password.
+
+After restarting the tunnel, you can now query our internal service over this ingress via `localhost` port 80:
+
+[source, bash]
+----
+curl -s http://localhost/
+----
+
+=== More Information
+
+* https://oreil.ly/nagmD[Service Discovery Example]
+* https://oreil.ly/AEDi5[Kubernetes Service]
+* https://oreil.ly/WRT5H[DNS for Services and Pods]
+* https://oreil.ly/voVbw[Debug Services]
+* https://oreil.ly/mGjzg[Using Source IP]
+* https://oreil.ly/pzOiM[Create an External Load Balancer]
+* https://oreil.ly/Idv2c[Ingress]
+* https://oreil.ly/W4i8U[Kubernetes NodePort Versus LoadBalancer Versus Ingress? When Should I Use What?]
+* https://oreil.ly/fXicP[Kubernetes Ingress Versus OpenShift Route]

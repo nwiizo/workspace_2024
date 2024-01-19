@@ -1,0 +1,66 @@
+== Managed Lifecycle
+
+For this simple example, you need access to a Kubernetes installation.
+Anyone as described in link:../../INSTALL.adoc[INSTALL] is good enough.
+
+Our sample https://github.com/k8spatterns/random-generator[random-generator] application provides a `/shutdown` endpoint, which we use to log its call during the shutdown of a Pod.
+
+But let's create the Pod first:
+
+[source, bash]
+----
+kubectl create -f https://k8spatterns.io/ManagedLifecycle/pod.yml
+----
+
+And verify its status with
+
+[source, bash]
+----
+kubectl get pods -w
+----
+
+As you can see, the Pod only starts after 30s because we use a `sleep 30` as a preStart hook (you can't even check the logs before).
+
+To watch the logs during the shutdown, we start a `kubectl logs` in the background:
+
+[source, bash]
+----
+kubectl logs -f random-generator &
+----
+
+You can see the `postStart` message, which has been picked up by a random generator during startup and copied to the standard output of the application container.
+The environment variable `WAIT_FOR_POST_START` that we set for our main application container indicates the random generator application to wait until the `postStart` file has been created:
+
+----
+io.k8spatterns.examples.RandomGeneratorApplication - Waiting for postStart to be finished ....
+io.k8spatterns.examples.RandomGeneratorApplication - Waiting for postStart to be finished ....
+io.k8spatterns.examples.RandomGeneratorApplication - Waiting for postStart to be finished ....
+io.k8spatterns.examples.RandomGeneratorApplication - postStart Message: Wake up!
+....
+----
+
+Now let's kill the Pod:
+
+[source, bash]
+----
+kubectl delete pod random-generator
+----
+
+You should see in the logs messages like the following which indicate that our `/shutdown` endpoint has been called indeed:
+
+----
+....
+i.k.examples.RandomGeneratorApplication  : SHUTDOWN NOW
+o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+i.k.examples.RandomGeneratorApplication  : >>>> SHUTDOWN HOOK called. Possibly because of a SIGTERM from Kubernetes
+----
+
+=== More Information
+
+* https://oreil.ly/2T2jc[Managed Lifecycle Example]
+* https://oreil.ly/xzeMi[Container Lifecycle Hooks]
+* https://oreil.ly/NTi1h[Attach Handlers to Container Lifecycle Events]
+* https://oreil.ly/j-5yl[Kubernetes Best Practices: Terminating with Grace]
+* https://oreil.ly/TgjCp[Graceful Shutdown of Pods with Kubernetes]
+* https://oreil.ly/CVZX6[Argo and Tekton: Pushing the Boundaries of the Possible on Kubernetes]
+* https://oreil.ly/iBhoQ[Russian Doll: Extending Containers with Nested Processes]

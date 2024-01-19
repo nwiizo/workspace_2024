@@ -1,0 +1,119 @@
+== Operator
+
+This example demonstrates a simple *Operator* for Kubernetes that relies on a shell script for its main logic. This Operator is based on the config watcher link:../Controller/README.adoc[Controller]. We recommend trying the Controller demo first, as it will provide valuable context for understanding this Operator.
+
+The Operator utilizes a dedicated _Custom Resource Definition_ (CRD) called `ConfigWatcher`, transforming our controller into an Operator. Most of the information about the Operator can be found within the resource files and the shell script that contains the main logic.
+
+For a detailed explanation of how this demo works, refer to the _Operator_ pattern in our book. This document will provide a brief walk-through of the example code.
+
+NOTE: Before proceeding, ensure you have stopped the link:../Controller/config-watcher-controller.yml[controller deployment] from the Controller demo. You can remove it using `kubectl delete -f config-watcher-controller.yml`. Then, set up this Operator demo in a new namespace.
+
+WARNING: This example is meant for educational purposes only and is unsuitable for general-purpose usage.
+
+The following steps assume you are using `minikube`. More options for running the example are described in the link:../../INSTALL.adoc#minikube[installation instructions].
+
+First, install the CRD and create a role that allows the modification of custom resources created by this CRD:
+
+[source, bash]
+----
+kubectl apply -f https://k8spatterns.io/Operator/config-watcher-crd.yml
+----
+
+Verify that the CRD has been registered:
+
+[source, bash]
+----
+kubectl get crd
+----
+
+The operator script is stored in a `ConfigMap`:
+
+[source, bash]
+----
+kubectl create configmap config-watcher-operator --from-file=./config-watcher-operator.sh
+----
+
+To deploy the Operator, a `Deployment` creates a pod with two containers:
+
+* A Kubernetes API proxy container that exposes the Kubernetes API on localhost with port 8001. The image for `k8spatterns/kubeapi-proxy` is defined in this link:../images/kubeapi-proxy.dockerfile[Dockerfile].
+* The main container executes the script from the `ConfigMap`. It is based on an Alpine base image with included https://curl.haxx.se/[curl] and https://stedolan.github.io/jq/[jq]. The Dockerfile for this image `k8spattern/curl-jq` can be found link:../images/curl-jq.dockerfile[here].
+
+Both images, https://cloud.docker.com/u/k8spatterns/repository/docker/k8spatterns/kubeapi-proxy[k8spatterns/kubeapi-proxy] and https://cloud.docker.com/u/k8spatterns/repository/docker/k8spatterns/curl-jq[k8spatterns/curl-jq] are available from Docker Hub.
+
+To create this deployment in the current namespace, run the following:
+
+[source, bash]
+----
+kubectl apply -f https://k8spatterns.io/Operator/config-watcher-operator.yml
+----
+
+To see our Operator in action, we will reuse the same simple web application as in the `Controller` example. This image exposes an environment variable as HTTP content on any request. The link:../images/mini-http-server.dockerfile[image] uses `nc` to deliver the content and is available on Docker Hub as https://cloud.docker.com/u/k8spatterns/repository/docker/k8spatterns/mini-http-server[k8spatterns/mini-http-server].
+
+Before deploying the web app, open another terminal and tail the log of our Operator to see the events received by the Operator as they come in:
+
+[source,bash]
+----
+kubectl logs -f $(kubectl get pods -l role=operator -o name) config-watcher
+----
+
+Now, create the web application:
+
+[source, bash]
+----
+kubectl apply -f https://k8spatterns.io/Operator/web-app.yml
+----
+
+In the web-app.yml file, you will find a `Deployment` using our HTTP server that references the content environment variable via a `ConfigMap`. Unlike the other controller example, this `ConfigMap` does *not* contain a reference to the pods to restart.
+
+With minikube, access the application in your browser:
+
+[source, bash]
+----
+minikube service webapp
+----
+
+(Use the option `-n namespace` if you have deployed this example in a different namespace than `default`).
+
+Stop the tunnel created by `minikube service` (with `CTRL-C`), update the content of `ConfigMap`, and watch the controller's log:
+
+To trigger the Operator on a config change, install a custom resource of the `ConfigWatcher` kind:
+
+[source,bash]
+----
+kubectl apply -f https://k8spatterns.io/Operator/config-watcher-sample.yml
+----
+
+Check that the resource has been created:
+
+[source, bash]
+----
+kubectl get configwatchers
+----
+
+After establishing the connection between the `ConfigMap` and `Pods`, change the content of the `ConfigMap` and watch the Operator log:
+
+[source, bash]
+----
+kubectl patch configmap webapp-config -p '{"data":{"message":"Greets from your smooth operator!"}}'
+----
+
+Finally, call the URL again to verify that the content has been updated:
+
+[source,bash]
+----
+minikube service webapp
+----
+
+=== More information
+
+* https://oreil.ly/iN2B4[Operator Example]
+* https://oreil.ly/aIGNA[OpenAPI V3]
+* https://oreil.ly/GeHKy[Kubebuilder]
+* https://oreil.ly/5JWcN[Operator Framework]
+* https://oreil.ly/etanj[Metacontroller]
+* https://oreil.ly/1iiab[Client Libraries]
+* https://oreil.ly/8ungP[Extend the Kubernetes API with CustomResourceDefinitions]
+* https://oreil.ly/0xhlw[Custom Resources]
+* https://oreil.ly/kyIsL[Sample-Controller]
+* https://oreil.ly/voY92[What Are Red Hat OpenShift Operators?]
+

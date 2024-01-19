@@ -1,0 +1,163 @@
+== Automated Placement
+
+This example illustrates how the placement of scheduled pods can be influenced.
+For these examples, we assume that you have Minikube installed and running as described in link:../../INSTALL.adoc#minikube[here].
+
+=== Node Selector
+
+The simplest way to influence the scheduling process is to use a `nodeSelector`.
+
+Apply our simple example https://github.com/k8spatterns/random-generator[random-generator] application with a node selector:
+
+[source, bash]
+----
+kubectl create -f https://k8spatterns.io/AutomatedPlacement/node-selector.yml
+----
+
+You will notice that this Pod does not get scheduled because the `nodeSelector` can't find any node with the label `disktype=ssd`:
+
+[source, bash]
+----
+kubectl describe pod node-selector
+----
+
+----
+....
+Events:
+  Type     Reason            Age              From               Message
+  ----     ------            ----             ----               -------
+  Warning  FailedScheduling  8s (x2 over 8s)  default-scheduler  0/1 nodes are available: 1 node(s) didnt match node selector.
+----
+
+Let's change this:
+
+[source, bash]
+----
+kubectl label node minikube disktype=ssd
+----
+
+[source, bash]
+----
+kubectl get pods
+----
+----
+NAME                READY   STATUS    RESTARTS   AGE
+random-generator    1/1     Running   0          65s
+----
+
+=== Node Affinity
+
+Let's now use Node affinity rules for scheduling our Pod:
+
+[source, bash]
+----
+kubectl create -f https://k8spatterns.io/AutomatedPlacement/node-affinity.yml
+----
+
+Again, our Pod will only schedule as no node fulfills the affinity rules.
+We can change this with
+
+[source, bash]
+----
+kubectl label node minikube numberCores=4
+----
+
+Does the Pod start up now? What if you choose two instead of 4 for the number of cores?
+
+=== Pod Affinity
+
+To test Pod affinity, we need to install a Pod to connect our Pod.
+We are trying to create both Pods with
+
+[source, bash]
+----
+kubectl create -f https://k8spatterns.io/AutomatedPlacement/pod-affinity.yml
+----
+
+[source, bash]
+----
+kubectl get pods
+----
+----
+NAME                READY   STATUS    RESTARTS   AGE
+confidential-high   1/1     Running   0          22s
+pod-affinity        0/1     Pending   0          22s
+----
+
+"confidential-high" is a placeholder pod with a label matched by our "pod-affinity" Pod.
+However, our node still needs to get the proper topology key.
+That can be changed with
+
+[source, bash]
+----
+kubectl label --overwrite node minikube security-zone=high
+----
+
+[source, bash]
+----
+kubectl get pods
+----
+----
+NAME                READY   STATUS    RESTARTS   AGE
+confidential-high   1/1     Running   0          9m39s
+pod-affinity        1/1     Running   0          9m39s
+----
+
+=== Taints and Tolerations
+
+For testing taints and tolerations, we first have to taint our Minikube node so that, by default, no Pods are scheduled on it:
+
+[source, bash]
+----
+kubectl taint nodes minikube node-role.kubernetes.io/master="":NoSchedule
+----
+
+You can check that this taint works by reapplying the previous `pod-affinity.yml` example and seeing that the `confidential-high` Pod is not scheduled.
+
+[source, bash]
+----
+kubectl delete -f https://k8spatterns.io/AutomatedPlacement/pod-affinity.yml
+kubectl create -f https://k8spatterns.io/AutomatedPlacement/pod-affinity.yml
+----
+
+[source, bash]
+----
+kubectl get pods
+----
+----
+NAME                READY   STATUS    RESTARTS   AGE
+confidential-high   0/1     Pending   0          2s
+pod-affinity        0/1     Pending   0          2s
+----
+
+But our Pod in `tolerations.yml` can be scheduled as it tolerates this new taint on Minikube:
+
+[source, bash]
+----
+kubectl create -f https://k8spatterns.io/AutomatedPlacement/tolerations.yml
+----
+
+[source, bash]
+----
+kubectl get pods
+----
+----
+NAME                READY   STATUS    RESTARTS   AGE
+confidential-high   0/1     Pending   0          2m51s
+pod-affinity        0/1     Pending   0          2m51s
+tolerations         1/1     Running   0          4s
+----
+
+=== More Information
+
+* https://oreil.ly/N-iAz[Automated Placement Example]
+* https://oreil.ly/QlbMB[Assigning Pods to Nodes]
+* https://oreil.ly/iPbBT[Scheduler Configuration]
+* https://oreil.ly/qkp60[Pod Topology Spread Constraints]
+* https://oreil.ly/appyT[Configure Multiple Schedulers]
+* https://oreil.ly/4lPFX[Descheduler for Kubernetes]
+* https://oreil.ly/oNGSR[Disruptions]
+* https://oreil.ly/w9tKY[Guaranteed Scheduling for Critical Add-On Pods]
+* https://oreil.ly/_MODM[Keep Your Kubernetes Cluster Balanced: The Secret to High Availability]
+* https://oreil.ly/6Tog3[Advanced Kubernetes Pod to Node Scheduling]
+

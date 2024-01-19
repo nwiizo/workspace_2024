@@ -1,0 +1,93 @@
+== Init Containers for Linking Configuration Containers
+
+In Kubernetes, containers within a Pod can share volumes. However, there is currently no way to directly share a directory from within a container with another container (although this feature is https://github.com/kubernetes/kubernetes/issues/831[planned]). To utilize immutable configuration containers for application configuration, we can employ https://kubernetes.io/docs/concepts/workloads/pods/init-containers/[init containers] to initialize an empty shared volume during startup.
+
+In the Docker example, the configuration Docker image was based on _scratch_, an empty Docker image without any operating system files. We only needed the configuration data shared via Docker volumes, so this image is passive. However, for the reasons mentioned above, we need assistance from the base image to copy the configuration data to the shared directory. `busybox` is an excellent choice for the base image, allowing us to use a simple Unix `cp` for this task.
+
+=== Creating Images
+
+The image creation process is similar to the link:../docker-volumes[plain Docker case]. Like the other examples, we use Minikube as the platform with a `docker` driver and the included Docker daemon for building the image. The following instructions assume that you already have Minikube running.
+
+Set the Docker environment variables to point to the Minikube Docker daemon:
+
+[source,bash]
+----
+eval $(minikube docker-env)
+----
+
+First, create the application Docker image using the link:../demo[demo.war]:
+
+[source,bash]
+----
+docker build -t k8spatterns/demo:1 -f Dockerfile-demo .
+----
+
+Now, create the _config-dev-image_, which holds the configuration for the developer environment:
+
+[source,bash]
+----
+docker build --build-arg config=dev.properties -f Dockerfile-config -t k8spatterns/config-dev:1 .
+----
+
+Examine `Dockerfile-config`. It differs from the Docker volume usage, as it uses `busybox` as the base image and contains an `ENTRYPOINT` for copying the configuration data. We don't need a container here; the image is sufficient.
+
+Next, create the configuration for the production environment from `prod.properties`. We make a production configuration similar to the development configuration:
+
+[source, bash]
+----
+docker build --build-arg config=prod.properties -f Dockerfile-config -t k8spatterns/config-prod:1 .
+----
+
+=== Applying Kubernetes Resources
+
+Now, apply the Kubernetes resource descriptor to deploy the image as a Deployment and add a Service for accessing the service:
+
+[source, bash]
+-----
+kubectl apply -f demo.yml
+-----
+
+=== Testing Configurations
+
+Open the application in the web browser with (stop it with `CTRL-C` when done):
+
+[source, bash]
+----
+minikube service demo
+----
+
+The only remaining task is to update the configuration image within the Pod declaration of our Deployment:
+
+[source, bash]
+----
+kubectl patch deployment demo --type json -p \
+  '[ {"op" : "replace", "path": "/spec/template/spec/initContainers/0/image", "value": "k8spatterns/config-prod:1"}]'
+----
+
+Now, rerun the command to see how the web app's configuration has changed:
+
+[source, bash]
+----
+minikube service demo
+----
+
+=== OpenShift Template
+
+If you are using OpenShift, you can benefit from the template mechanism provided by OpenShift.
+
+Our example can be deployed with the template defined in `demo-openshift-template.yml`:
+
+[source, bash]
+----
+oc create -f demo-openshift-template.yml
+----
+
+The template contains the same elements as in `demo.yml` but is parameterized for the init container's image. The template variable used here is `CONFIG_IMAGE` and defaults to `k8spatterns/config-dev:1`.
+
+To instantiate the template, call `oc new-app` with the configuration image you want to use:
+
+[source, bash]
+----
+oc new-app demo -p CONFIG_IMAGE=k8spatterns/config-prod:1
+----
+

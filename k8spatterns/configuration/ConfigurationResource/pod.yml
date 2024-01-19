@@ -1,0 +1,44 @@
+# Environment variables picked up from a ConfigMap
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: random-generator
+  labels:
+    app: random-generator
+spec:
+  containers:
+  - image: k8spatterns/random-generator:1.0
+    name: random-generator
+    env:
+    # Configure Spring boot to pick up that configuration coming from
+    # a ConfigMap
+    - name: SPRING_CONFIG_LOCATION
+      value: /config/app/random-generator.properties
+    # Pattern environment variable is picked up from a config map
+    - name: PATTERN
+      valueFrom:
+        configMapKeyRef:
+          name: random-generator-config
+          key: PATTERN
+    # Use 'envFrom' to pick up multiple enviroment variables from a config map
+    envFrom:
+    - configMapRef:
+        name: random-generator-config
+        optional: false
+      prefix: CONFIG_
+    volumeMounts:
+    - name: config-volume
+      mountPath: /config
+  volumes:
+  # Volume is mounted directly from a config map
+  - name: config-volume
+    configMap:
+      name: random-generator-config
+      items:
+      # Mount only application properties under the provided path
+      # and with the given permission
+      - key: application.properties
+        path: app/random-generator.properties
+        mode: 0400
+

@@ -1,0 +1,230 @@
+== NetworkSegmentation
+
+ifndef::skipInstall[]
+We recommend using a Minikube installation for this example. Please refer to the link:../../INSTALL.adoc#minikube[installation instructions] for details.
+
+Before running these examples, you need to set up Minikube with a Container Network Interface (CNI) plugin that supports NetworkPolicies, such as Calico. Follow these steps to start and configure Minikube with Calico:
+
+[source, shell]
+----
+minikube start --cni=calico
+----
+
+To verify that the Calico CNI plugin has been installed, use
+
+[source, shell]
+----
+kubectl get pods -n kube-system | grep calico
+----
+endif::skipInstall[]
+
+=== Network Policies
+
+First, create a deployment of the random generator application with the following manifest:
+
+[source,shell]
+----
+kubectl apply -f https://k8spatterns.io/NetworkSegmentation/random-generator-deployment.yml
+----
+
+Deploy a curl container to test if the random generator service is reachable:
+
+[source,shell]
+----
+kubectl run curl --image=curlimages/curl --restart=Never --command -- sleep infinity
+----
+
+Get the IP address of the random-generator pod:
+
+[source,shell]
+----
+RANDOM_GENERATOR_POD_IP=$(kubectl get pod -l app=random-generator -o jsonpath='{.items[0].status.podIP}')
+echo $RANDOM_GENERATOR_POD_IP
+----
+
+You should be able to reach the our random-generator app from within the cluster. The following command should give you the usual JSON response including a random number:
+
+[source,shell]
+----
+kubectl exec curl -- curl -s $RANDOM_GENERATOR_POD_IP:8080
+----
+
+==== Deny All Policy
+
+Next, let's create the NetworkPolicy for denying all incoming traffic by applying
+
+[source,shell]
+----
+kubectl apply -f https://k8spatterns.io/NetworkSegmentation/deny-all-networkpolicy.yml
+----
+
+Let's now attempt to access the random generator service from the curl container
+
+[source,shell]
+----
+kubectl exec curl -- curl -m 5 $RANDOM_GENERATOR_POD_IP:8080
+----
+
+The request should time out due to the deny-all policy.
+
+==== Allow Ingress from Pods
+
+Now let's reenable the access again to only the random-generator Deployment. 
+
+For this, create a NetworkPolicy that label-matches our Deployment and allows access from all Pods that habe a label `random-client: "true"`:
+
+[source,shell]
+----
+kubectl apply -f https://k8spatterns.io/NetworkSegmentation/allow-access-networkpolicy.yml
+----
+
+You still should not be able to access the Pod from our original `curl` Pod. Check it out by using again this command, that should return with a timeout:
+
+[source,shell]
+----
+kubectl exec curl -- curl -m 5 $RANDOM_GENERATOR_POD_IP:8080
+----
+
+Now create another curl client, but this time with a label `random-client` that allows to pass the ingress NetworkPolicy
+
+[source,shell]
+----
+kubectl run curl-random --image=curlimages/curl --labels=role=random-client \
+                        --restart=Never --command -- sleep infinity
+----
+
+Finally, Attempt to access the random generator service from the curl-access container:
+
+[source,shell]
+----
+kubectl exec curl-random -- curl -s $RANDOM_GENERATOR_POD_IP:8080
+----
+
+You should receive a random number as the output again, indicating successful access to the random-generator service.
+
+==== Egress Policies
+
+Let's continue our journey and restrict the egress access for our curl in the Pod `random-client` that we have created above.
+
+For this, apply the following resource file that will only allows cluster-internal traffic, except for `api.chucknorris.io` (you might need to check the IP adresses in this resource file whether they are still pointing to `api.chucknorris.io`):
+
+[source,shell]
+----
+kubectl apply -f https://k8spatterns.io/NetworkSegmentation/allow-internal-egress-only.yml
+----
+
+To verify, whether our egress policies work, let's try the following three curl:
+
+[source,shell]
+----
+kubectl exec curl-random -- curl -sm 5 $RANDOM_GENERATOR_POD_IP:8080
+----
+
+[source,shell]
+----
+kubectl exec curl-random -- curl -sm 5 https://github.com
+----
+
+[source,shell]
+----
+kubectl exec curl-random -- curl -sm 5 https://api.chucknorris.io/jokes/random | jq .
+----
+
+Can you guess which one goes through and which have a timeout after 5s ?
+
+For many more example and real world use cases of NetworkPolicies checkout the https://github.com/ahmetb/kubernetes-network-policy-recipes[Kubernetes Network Policy Recipes], which is really a great resource for NetworkPolicy setups
+
+== Authorization Policies
+
+For the following examples Istio as a service mesh needs to be installed. For minikube this ist best to create an instance with enough memory and cpu power:
+
+[source, shell]
+----
+minikube start --memory=8192 --cpus=4
+----
+
+Next you need to install the lastest version of the `istioctl` binary.
+Either by downloading it from https://github.com/istio/istio/releases or, if you are a `brew` user, with `brew install istioctl`.
+
+To finish the installation call
+
+[source, shell]
+----
+istioctl install --set profile=demo
+----
+
+and enable the default namespace by adding a label:
+
+[source, shell]
+----
+kubectl label namespace default istio-injection=enabled
+----
+
+First, ensure that our random generator application is deployed:
+
+[source,shell]
+----
+kubectl apply -f https://k8spatterns.io/NetworkSegmentation/random-generator-deployment.yml
+----
+
+This creates a Deployment with one Pod. In addition add a Service "random-generator" in front of the Pods and map the Pod port 8080 to port 80 for the Service
+
+[source,shell]
+----
+kubectl apply -f https://k8spatterns.io/NetworkSegmentation/random-generator-service.yml
+----
+Now, create an `AuthorizationPolicy` resource that denies all traffic in all namespaces by default:
+
+[source,shell]
+----
+kubectl apply -f https://k8spatterns.io/NetworkSegmentation/authorization-policy-deny-all.yml
+----
+
+Next, create another `AuthorizationPolicy` that allows traffic to the `/metrics` endpoint for the `random-generator` application. Save the content below in a file called `allow-metrics.yaml`:
+
+[source,shell]
+----
+kubectl apply -f https://k8spatterns.io/NetworkSegmentation/authorization-policy-allow-metrics.yml
+----
+
+In order to veriy our setup, fire up a `curl` container that waits for ever so that we can exec into it later on:
+
+[source,shell]
+----
+kubectl run curl --image=curlimages/curl --restart=Never --command -- sleep infinity
+----
+
+Now, use `curl` to make a request to the metrics enpoind via the service positive example request:
+
+[source,shell]
+----
+kubectl exec curl -- curl -s http://random-generator/actuator/health
+----
+
+You should receive the metrics data as a response.
+
+For a negative example, try to access an unauthorized endpoint:
+
+[source,shell]
+----
+kubectl exec curl -- curl -sm 5 http://random-generator/
+----
+
+You should receive an "RBAC: access denied" response or a similar access denial message.
+
+=== More Information
+
+* https://oreil.ly/gwU-y[Network Segmentation Example]
+* https://oreil.ly/P5r0X[Network Policies]
+* https://oreil.ly/qR0O9[The Kubernetes Network Model]
+* https://oreil.ly/NhrWK[Kubernetes Network Policy Recipes]
+* https://oreil.ly/BzlSd[Using Network Policies]
+* https://oreil.ly/r-dn7[Why You Should Test Your Kubernetes Network Policies]
+* https://oreil.ly/_5cWc[Using the eBPF Superpowers to Generate Kubernetes Security Policies]
+* https://oreil.ly/5VbP4[Using Advise Network-Policy with Inspector Gadget]
+* https://oreil.ly/-jKvO[You and Your Security Profiles; Generating Security Policies with the Help of eBPF]
+* https://oreil.ly/r-4pI[kube-iptables-tailer]
+* https://oreil.ly/9lqlu[Creating Policies from Verdicts]
+* https://oreil.ly/69M7s[Istio: Authorization Policy]
+* https://oreil.ly/bLq35[Istio: Authentication Policies]
+* https://oreil.ly/X00FG[SIG Multitenancy Working Group]

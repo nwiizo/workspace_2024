@@ -1,0 +1,47 @@
+pattern: Network Segmentation
+category: security
+base: security/NetworkSegmentation
+examples:
+- description: Deny all ingress traffic
+  path: deny-all-networkpolicy.yml
+- description: Deployment for testing
+  path: random-generator-deployment.yml
+- description: Service for the random-generator application
+  path: random-generator-service.yml
+- description: "Allow incoming access for clients with 'random-client: true'"
+  path: allow-access-networkpolicy.yml
+- description: Allow internal egress only, with one exception
+  path: allow-internal-egress-only.yml
+- description: Deny all L7 traffic to all Pods
+  path: authorization-policy-deny-all.yml
+- description: Allow traffic to the metrics endpoint
+  path: authorization-policy-allow-metrics.yml
+links:
+- url: https://oreil.ly/gwU-y
+  title: 'Network Segmentation Example'
+- url: https://oreil.ly/P5r0X
+  title: 'Network Policies'
+- url: https://oreil.ly/qR0O9
+  title: 'The Kubernetes Network Model'
+- url: https://oreil.ly/NhrWK
+  title: 'Kubernetes Network Policy Recipes'
+- url: https://oreil.ly/BzlSd
+  title: 'Using Network Policies'
+- url: https://oreil.ly/r-dn7
+  title: 'Why You Should Test Your Kubernetes Network Policies'
+- url: https://oreil.ly/_5cWc
+  title: 'Using the eBPF Superpowers to Generate Kubernetes Security Policies'
+- url: https://oreil.ly/5VbP4
+  title: 'Using Advise Network-Policy with Inspector Gadget'
+- url: https://oreil.ly/-jKvO
+  title: 'You and Your Security Profiles; Generating Security Policies with the Help of eBPF'
+- url: https://oreil.ly/r-4pI
+  title: 'kube-iptables-tailer'
+- url: https://oreil.ly/9lqlu
+  title: 'Creating Policies from Verdicts'
+- url: https://oreil.ly/69M7s
+  title: 'Istio: Authorization Policy'
+- url: https://oreil.ly/bLq35
+  title: 'Istio: Authentication Policies'
+- url: https://oreil.ly/X00FG
+  title: 'SIG Multitenancy Working Group'

@@ -1,0 +1,216 @@
+== Predictable Demands
+
+ifndef::skipInstall[]
+We recommend using a Minikube installation for this example. Please refer to the link:../../INSTALL.adoc#minikube[installation instructions] for details.
+
+To play with memory limits, we assume you use the default 2GB memory for your Minikube VM. You can adjust this value with the `--memory` flag.
+endif::skipInstall[]
+;
+To access the PersistentVolume used in this demo, mount a local directory `logs/` into the Minikube VM with the following command:
+
+[source, bash]
+----
+minikube start --mount --mount-string="$(pwd)/logs:/tmp/example" --memory 2G
+----
+
+The directory is now available within the Minikube VM at the path `/tmp/example`.
+
+For this example, we will use the https://github.com/k8spatterns/random-generator[random number service], a simple REST service that returns just a random number.  This service is contained in the image `k8spatterns/random-generator:1.0` from Docker Hub.
+
+=== Hard requirements
+
+We will set up this image that it will write a log file in a PersistentVolume and get some configuration data from a ConfigMap.
+
+Now lets try to create the Pod
+
+[source, bash]
+----
+kubectl create -f https://k8spatterns.io/PredictableDemands/pod.yml
+----
+
+The Pod will not start immediately because the PersistentVolumeClaim (PVC) is missing. Check the status with:
+
+[source, bash]
+----
+kubectl get pods
+----
+----
+NAME               READY   STATUS    RESTARTS   AGE
+random-generator   0/1     Pending   0          3s
+----
+
+When you describe the pod, you can see that the PVC is missing:
+
+[source, bash]
+----
+kubectl describe pod random-generator
+----
+----
+...
+Events:
+  Type     Reason            Age                From               Message
+  ----     ------            ----               ----               -------
+  Warning  FailedScheduling  44s (x2 over 44s)  default-scheduler  persistentvolumeclaim "random-generator-log" not found
+----
+
+Let's now create the PersistentVolume and PVC:
+
+[source, bash]
+----
+kubectl apply -f https://k8spatterns.io/PredictableDemands/pv-and-pvc.yml
+----
+
+When we create the PV and PVC we are already one step further:
+
+[source, bash]
+----
+kubectl describe pod random-generator
+----
+----
+...
+Events:
+  Type     Reason            Age                From               Message
+  ----     ------            ----               ----               -------
+  Warning  FailedScheduling  32s (x5 over 7m44s)  default-scheduler  persistentvolumeclaim "random-generator-log" not found
+  Warning  FailedScheduling  15s (x6 over 15s)    default-scheduler  pod has unbound immediate PersistentVolumeClaims
+  Normal   Scheduled         15s                  default-scheduler  Successfully assigned default/random-generator to minikube
+  Normal   Pulled            3s (x3 over 14s)      Pulling image "k8spatterns/random-generator:1.0"
+  Warning  Failed            3s (x3 over 14s)     kubelet, minikube  Error: configmap "random-generator-config" not found
+----
+
+The PVC could be bound, but the ConfigMap is still missing.
+
+Now you can create the ConfigMap:
+
+[source, bash]
+----
+kubectl apply -f https://k8spatterns.io/PredictableDemands/configmap.yml
+----
+
+and the pod will be finally up:
+
+[source, bash]
+----
+kubectl get pods
+----
+----
+NAME               READY   STATUS    RESTARTS   AGE
+random-generator   1/1     Running   0          3s
+----
+
+You can send an HTTP request to the service to check if everything is working correctly. As we haven't installed a Service, let's run `curl` within the cluster to check the output:
+[source, bash]
+----
+POD_IP=$(kubectl get pod -l app=random-generator -o jsonpath='{.items[0].status.podIP}')
+----
+[source, bash]
+----
+kubectl run -itq --rm --image=k8spatterns/curl-jq --restart=Never curl -- http://$POD_IP:8080 | jq .
+----
+
+This will result in an output like this:
+
+[source]
+----
+{
+  "random": 79003229,
+  "pattern": "Predictable Demands",
+  "id": "d88cc0e5-c7f2-4e98-8073-ed76151b5218",
+  "version": "1.0"
+}
+----
+
+The log file that the application writes to the persistent volume should appear in our locally mounted directory:
+
+[source, bash]
+----
+cat ./logs/random.log
+----
+----
+...
+16:52:44.734,fe870020-fcab-42bf-b745-db65ec1cc51f,2137264413
+...
+----
+
+Now that our hard requirements (ConfigMap, PVC) are fulfilled our the application runs smoothly.
+
+If you are done, it's a good idea to cleanup:
+[source, bash]
+----
+kubectl delete pod/random-generator
+----
+
+[source, bash]
+----
+kubectl delete -f https://k8spatterns.io/PredictableDemands/pv-and-pvc.yml
+----
+
+=== Resource limits
+
+Let's create now a real Deployment with resource limits
+
+[source, bash]
+----
+kubectl create -f https://k8spatterns.io/PredictableDemands/deployment.yml
+----
+
+This will use 200M as upper limit for our application.
+Since we are using Java 11 as JVM for our Java application, the JVM respects this boundary
+and allocates only a fraction of this as heap.
+You can easily check this with: (call `CTRL-C` when done)
+
+[source, bash]
+----
+kubectl logs -l app=random-generator -f | grep "=== "
+----
+
+[source]
+----
+i.k.examples.RandomGeneratorApplication  : === Max Heap Memory:  96 MB
+i.k.examples.RandomGeneratorApplication  : === Used Heap Memory: 37 MB
+i.k.examples.RandomGeneratorApplication  : === Free Memory:      13 MB
+i.k.examples.RandomGeneratorApplication  : === Processors:       1
+----
+
+Let's now try to change our limits and requests with smaller and larger values.
+
+[source, bash]
+----
+patch=$(cat <<EOT
+[
+  {
+    "op": "replace",
+    "path": "/spec/template/spec/containers/0/resources/requests/memory",
+    "value": "30Mi"
+  },
+  {
+    "op": "replace",
+    "path": "/spec/template/spec/containers/0/resources/limits/memory",
+    "value": "30Mi"
+  }
+]
+EOT
+)
+kubectl patch deploy random-generator --type=json -p $patch
+----
+
+If you check your Pods now with `kubectl get pods` and `kubectl describe`, do you see what you expect ?
+Also don't forget to check the logs, too !
+
+=== More Information
+
+* https://oreil.ly/HYIqJ[Predictable Demands Example]
+* https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/[Configure a Pod to Use a ConfigMap]
+* https://oreil.ly/8bKD5[Kubernetes Best Practices: Resource Requests and Limits]
+* https://oreil.ly/a37eO[Resource Management for Pods and Containers]
+* https://oreil.ly/RXQD1[Manage HugePages]
+* https://oreil.ly/ozlU1[Configure Default Memory Requests and Limits for a Namespace]
+* https://oreil.ly/fxRvs[Node-Pressure Eviction]
+* https://oreil.ly/FpUoH[Pod Priority and Preemption]
+* https://oreil.ly/x07OT[Configure Quality of Service for Pods]
+* https://oreil.ly/yORlL[Resource Quality of Service in Kubernetes]
+* https://kubernetes.io/docs/concepts/policy/resource-quotas/[Resource Quotas]
+* https://oreil.ly/1bXfO[Limit Ranges]
+* https://oreil.ly/lkmMK[Process ID Limits and Reservations]
+* https://oreil.ly/Yk-Ag[Stop Using CPU Limits on Kubernetes]
+* https://oreil.ly/cdJkP[What Everyone Should Know About Kubernetes Memory Limits]

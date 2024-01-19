@@ -1,0 +1,19 @@
+pattern: Env Var Configuration
+category: configuration
+base: configuration/EnvVarConfiguration
+examples:
+- description:
+  path: pod.yml
+- description:
+  path: service.yml
+links:
+- url: https://oreil.ly/W25g0
+  title: 'EnvVar Configuration Example'
+- url: https://oreil.ly/DzBTm
+  title: 'The Twelve-Factor App'
+- url: https://oreil.ly/KxFtr
+  title: 'Expose Pod Information to Containers Through Environment Variables'
+- url: https://oreil.ly/YoUVj
+  title: 'Define Dependent Environment Variables'
+- url: https://oreil.ly/3XVe9
+  title: 'Spring Boot Profiles for Using Sets of Configuration Values'

@@ -1,0 +1,86 @@
+== Elastic Scale
+
+IMPORTANT: The instructions have not been written/finished, but you can already try out the resource files provided here. They might not fully work yet, but should be fixed soonish. The Instructions will be added soon, too.
+
+.Horizontal Pod Autoscaler
+[source, bash]
+----
+# Start Minikiube with 8GB of RAM
+minikube start --memory 4096
+
+# Enable metrics-server and heapster for measuring
+minikube addons enable metrics-server
+minikube addons enable heapster
+
+# Create deployment for out random service
+kubectl create -f deployment.yml
+
+# For V1 HPA
+kubectl autoscale deployment random-generator --min=1 --max=10 --cpu-percent=50
+
+# Same for V2
+kubectl create -f hpa.yml
+
+# Put some load on the system
+port=$(kubectl get svc random-generator -o jsonpath={.spec.ports[0].nodePort})
+while true; do curl -s http://$(minikube ip):port?burn=10000 >/dev/null; done
+
+# In other terminal:
+watch kubectl get pods,deploy,hpa
+
+# Delete HPA again
+kubectl delete hpa random-generator
+----
+
+
+.Vertical Pod Autoscaler
+[source, bash]
+----
+# Check that HPA is deleted
+
+# Install VPA according to https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler
+'''
+git clone git@github.com:kubernetes/autoscaler.git
+cd ./autoscaler/vertical-pod-autoscaler
+./hack/vpa-up.sh
+'''
+
+# Deploy app if not already deployed
+kubectl create -f deployment.yml
+
+# Apply VPA resource
+kubectl create -f vpa.yml
+
+# Check VPA recommendations
+kubectl describe vpa random-generator
+----
+
+=== More Information
+
+* https://oreil.ly/PTUws[Elastic Scale Example]
+* https://oreil.ly/x2DJI[Rightsize Your Pods with Vertical Pod Autoscaling]
+* https://oreil.ly/_nRvf[Kubernetes Autoscaling 101]
+* https://oreil.ly/_hg2J[Horizontal Pod Autoscaling]
+* https://oreil.ly/n1C4o[HPA Algorithm Details]
+* https://oreil.ly/4BN1z[Horizontal Pod Autoscaler Walk-Through]
+* https://oreil.ly/8W7WM[Knative]
+* https://oreil.ly/dt15f[Knative Autoscaling]
+* https://oreil.ly/-f2di[Knative: Serving Your Serverless Services]
+* https://keda.sh[KEDA]
+* https://oreil.ly/0Q4g4[Application Autoscaling Made Easy with Kubernetes Event-Driven Autoscaling (KEDA)]
+* https://oreil.ly/lIDRK[Kubernetes Metrics API and Clients]
+* https://oreil.ly/GowW1[Vertical Pod Autoscaling]
+* https://oreil.ly/bhuVj[Configuring Vertical Pod Autoscaling]
+* https://oreil.ly/8LUZT[Vertical Pod Autoscaler Proposal]
+* https://oreil.ly/Hk5Xc[Vertical Pod Autoscaler GitHub Repo]
+* https://oreil.ly/eKb8G[Kubernetes VPA: Guide to Kubernetes Autoscaling]
+* https://oreil.ly/inobt[Cluster Autoscaler]
+* https://oreil.ly/oq_FS[Performance Under Load: Adaptive Concurrency Limits at Netflix]
+* https://oreil.ly/YmgkB[Cluster Autoscaler FAQ]
+* https://oreil.ly/pw4aC[Cluster API]
+* https://oreil.ly/OvJrT[Kubermatic Machine-Controller]
+* https://oreil.ly/W2o6v[OpenShift Machine API Operator]
+* https://oreil.ly/RH7fI[Adaptive Concurrency Limits Library (Java)]
+* https://oreil.ly/f0TyP[Knative Tutorial]
+
+

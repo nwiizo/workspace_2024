@@ -1,0 +1,59 @@
+== Envvar Configuration
+
+This example will guide you through configuring environment variables within a Kubernetes Pod using a ConfigMap and a Secret. Make sure you have access to a Kubernetes cluster before proceeding. For various installation options, please refer to link:../../INSTALL.adoc#minikube[INSTALL].
+
+First, let's create a ConfigMap and a Secret, each containing one entry:
+
+[source, bash]
+----
+kubectl create configmap random-generator-config \
+    --from-literal=PATTERN=EnvVarConfiguration \
+    --from-literal="ILLEG.AL=Invalid Envvar name"
+----
+
+[source, bash]
+----
+kubectl create secret generic random-generator-secret --from-literal=seed=11232156346
+----
+
+These resources will be used to define environment variables in a simple Pod declaration for our sample https://github.com/k8spatterns/random-generator[random-generator REST service]:
+
+[source, bash]
+----
+kubectl create -f https://k8spatterns.io/EnvVarConfiguration/pod.yml
+----
+
+Inspecting the resource description reveals how the ConfigMap and Secret are used to set two environment variables, `PATTERN` and `SEED`, which are then exposed via the random-generator REST service.
+
+To access the REST service, expose the Pod using the following command:
+
+[source, bash]
+----
+kubectl apply -f https://k8spatterns.io/EnvVarConfiguration/service.yml
+----
+
+For simplicity, this service exposes the service port via a `nodePort`. Assuming you are using Minikube, you can access the service from your desktop with the following:
+
+[source, bash]
+----
+minikube service random-generator --url > /tmp/random-url.txt &
+----
+
+This command starts a tunnel in the background and writes the access URLs for the exposed ports to a text file. Use the following command to access the service:
+
+[source, bash]
+----
+curl -s $(cat /tmp/random-url.txt)/info | jq .
+----
+
+* Can you see how the environment variables are exposed?
+* What happens when you change the data of the ConfigMap or Secret (e.g., with `kubectl edit cm random-generator-config`)? Is the changed value reflected in response to your curl request?
+* What steps are necessary to display the updated value in the HTTP response?
+
+=== More Information
+
+* https://oreil.ly/W25g0[EnvVar Configuration Example]
+* https://oreil.ly/DzBTm[The Twelve-Factor App]
+* https://oreil.ly/KxFtr[Expose Pod Information to Containers Through Environment Variables]
+* https://oreil.ly/YoUVj[Define Dependent Environment Variables]
+* https://oreil.ly/3XVe9[Spring Boot Profiles for Using Sets of Configuration Values]
