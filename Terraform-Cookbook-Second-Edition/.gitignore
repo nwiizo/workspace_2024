@@ -1,0 +1,17 @@
+note.txt
+.terraform
+terraform.tfstate.*
+terraform.tfstate
+terraform.tfstate.backup
+.infracost
+cmd.txt
+*.tfplan
+gcp-key.json
+tf-controller-azurerm-demo.yaml
+.idea
+__pycache__
+.pytest_cache
+*.tfout
+demo.tfstate
+.pluralith
+CHAP07/terrafile/new/modules
