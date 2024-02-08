@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fancyapp
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: fancy
+  template:
+    metadata:
+      labels:
+        app: fancy
+        env: development
+    spec:
+      containers:
+      - name: sise
+        image: gcr.io/google-samples/hello-app:2.0
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SIMPLE_SERVICE_VERSION
+          value: "2.0"
