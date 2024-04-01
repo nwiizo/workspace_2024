@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>文字数カウンター</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>文字数カウンター</h2>
+    <div class="instructions">
+      以下のテキストエリアに文章を入力すると、文字数、行数、段落数がカウントされます。「カウント」ボタンをクリックすると結果が表示されます。「リセット」ボタンを使用すると、テキストがクリアされ、カウントがリセットされます。
+    </div>
+    <textarea id="input" placeholder="ここに文章を入力してください..."></textarea>
+    <div class="output">
+      <div>文字数（スペース込み）: <span id="countWithSpaces">0</span></div>
+      <div>文字数（スペース除く）: <span id="countWithoutSpaces">0</span></div>
+      <div>行数: <span id="lineCount">0</span></div>
+      <div>段落数: <span id="paragraphCount">0</span></div>
+    </div>
+    <button id="countButton">カウント</button>
+    <button id="resetButton">リセット</button>
+  </div>
+  <script src="wasm_exec.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
