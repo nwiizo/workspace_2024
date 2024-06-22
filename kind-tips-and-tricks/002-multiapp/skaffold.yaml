@@ -1,0 +1,17 @@
+apiVersion: skaffold/v2beta29
+kind: Config
+build:
+  artifacts:
+  - image: service-a
+    context: service-a
+    docker:
+      dockerfile: Dockerfile
+  - image: service-b
+    context: service-b
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - k8s-manifests.yaml
+
