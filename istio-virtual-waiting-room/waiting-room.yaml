@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: waiting-room-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: waiting-room-app
+  template:
+    metadata:
+      labels:
+        app: waiting-room-app
+    spec:
+      containers:
+      - name: waiting-room-app
+        image: waiting-room-app:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: waiting-room-app
+spec:
+  selector:
+    app: waiting-room-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080

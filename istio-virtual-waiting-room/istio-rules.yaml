@@ -1,0 +1,58 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: waiting-room-vs
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - waiting-room-gateway
+  http:
+  - route:
+    - destination:
+        host: waiting-room-app
+        port:
+          number: 80
+    timeout: 1s
+    retries:
+      attempts: 3
+      perTryTimeout: 500ms
+    fault:
+      delay:
+        percentage:
+          value: 80
+        fixedDelay: 5s
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: waiting-room-dr
+spec:
+  host: waiting-room-app
+  trafficPolicy:
+    connectionPool:
+      tcp:
+        maxConnections: 10
+      http:
+        http1MaxPendingRequests: 1
+        maxRequestsPerConnection: 1
+    outlierDetection:
+      consecutive5xxErrors: 1
+      interval: 1s
+      baseEjectionTime: 3m
+      maxEjectionPercent: 100
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: waiting-room-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
