@@ -1,0 +1,11 @@
+[package]
+name = "hello"
+version = "0.1.0"
+edition = "2021"
+authors = [ "Ken Youens-Clark <kyclark@gmail.com>" ]
+
+[dependencies]
+
+[dev-dependencies]
+assert_cmd = "2.0.13"
+pretty_assertions = "1.4.0"
