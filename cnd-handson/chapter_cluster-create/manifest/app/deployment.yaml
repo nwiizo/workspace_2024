@@ -1,0 +1,126 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    policy.cilium.io/proxy-visibility: <Ingress/8080/TCP/HTTP>
+  labels:
+    app: handson
+    color: blue
+    version: v1
+    prometheus-monitor-ignore: ""
+  name: handson-blue
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: handson
+      color: blue
+  strategy:
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: handson
+        color: blue
+        version: v1
+        prometheus-monitor-ignore: ""
+    spec:
+      serviceAccountName: handson-blue
+      containers:
+      - image: argoproj/rollouts-demo:blue
+        imagePullPolicy: IfNotPresent
+        name: handson
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+            scheme: HTTP
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+            scheme: HTTP
+        resources:
+          requests:
+            memory: 84Mi
+            cpu: 100m
+          limits:
+            memory: 84Mi
+            cpu: 100m
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 2000
+          allowPrivilegeEscalation: false
+      terminationGracePeriodSeconds: 15
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    policy.cilium.io/proxy-visibility: <Ingress/8080/TCP/HTTP>
+  labels:
+    app: handson
+    color: yellow
+    version: v1
+    prometheus-monitor-ignore: ""
+  name: handson-yellow
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: handson
+      color: yellow
+  strategy:
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: handson
+        color: yellow
+        version: v1
+        prometheus-monitor-ignore: ""
+    spec:
+      serviceAccountName: handson-yellow
+      containers:
+      - image: argoproj/rollouts-demo:yellow
+        imagePullPolicy: IfNotPresent
+        name: handson
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+            scheme: HTTP
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+            scheme: HTTP
+        resources:
+          requests:
+            memory: 84Mi
+            cpu: 100m
+          limits:
+            memory: 84Mi
+            cpu: 100m
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 2000
+          allowPrivilegeEscalation: false
+      terminationGracePeriodSeconds: 15

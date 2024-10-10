@@ -1,0 +1,14 @@
+---
+metadata:
+  name: weight-based-routing
+spec:
+  http:
+  - route:
+    - destination:
+        host: handson
+        subset: blue
+      weight: 0
+    - destination:
+        host: handson
+        subset: yellow
+      weight: 100

@@ -1,0 +1,22 @@
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: layer4-authz
+  namespace: handson
+  labels:
+    content: layer4-authz
+spec:
+  selector:
+    matchLabels:
+      app: handson
+  action: DENY
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/handson/sa/curl-deny
+    to:
+    - operation:
+        ports:
+        - "8080"
