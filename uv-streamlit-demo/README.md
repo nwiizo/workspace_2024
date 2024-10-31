@@ -4,6 +4,8 @@
 
 Pythonの開発環境には新しい選択肢が増えています。最近注目を集めているパッケージマネージャーの`uv`を使用して、Streamlitアプリケーションを構築し、Dockerコンテナで実行する方法について説明します。
 
+- [Production-ready Python Docker Containers with uv](https://hynek.me/articles/docker-uv/) などの記事で紹介されているように、`uv`を使用することで、Pythonのパッケージ管理を効率化できます。
+
 ## プロジェクトの構造
 
 ```
@@ -110,6 +112,7 @@ uv init
 ```
 
 3. Install dependencies:
+ローカルのPythonのバージョンとDockerfileのPythonバージョンが一致するようにしてください。一致させられない場合は、`pyproject.toml`と`uv.lock`を修正してください。
 ```bash
 uv add streamlit
 ```
