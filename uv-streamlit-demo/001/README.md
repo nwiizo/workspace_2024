@@ -92,11 +92,11 @@ dependencies = [
 
 ### 4. README.md
 
-プロジェクトのセットアップと実行方法を説明するドキュメントを作成します：
+プロジェクトのセットアップと実行方法を説明するドキュメントを作成します。
 
 # UV Streamlit Demo
 
-This project demonstrates how to use UV package manager with Streamlit and Docker.
+この、プロジェクトは、UVパッケージマネージャーをStreamlitとDockerで使う方法を示しています。
 
 ## Setup
 
