@@ -101,17 +101,21 @@ This project demonstrates how to use UV package manager with Streamlit and Docke
 
 ## Setup
 
-1. Install UV:
+### 1. Install UV:
+そのほかにも、[公式ドキュメント](https://docs.astral.sh/uv/getting-started/installation/)を参照してください。
+
 ```bash
 pip install uv
 ```
 
-2. Initialize the project:
+### 2. Initialize the project:
+新しいPythonプロジェクトを作成します。
+
 ```bash
 uv init
 ```
 
-3. Install dependencies:
+### 3. Install dependencies:
 ローカルのPythonのバージョンとDockerfileのPythonバージョンが一致するようにしてください。一致させられない場合は、`pyproject.toml`と`uv.lock`を修正してください。
 ```bash
 uv add streamlit
@@ -120,6 +124,8 @@ uv add streamlit
 ## Running the Application
 
 ### With Docker
+実際にdockerイメージをビルドして、コンテナを実行します。
+
 
 1. Build the image:
 ```bash
@@ -146,7 +152,7 @@ streamlit run app.py
 ```
 
 
-## セットアッと実行手順
+## セットアップ実行手順
 
 ### 1. プロジェクトの初期化
 
