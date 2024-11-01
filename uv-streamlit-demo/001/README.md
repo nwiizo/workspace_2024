@@ -94,7 +94,6 @@ dependencies = [
 
 プロジェクトのセットアップと実行方法を説明するドキュメントを作成します：
 
-```markdown
 # UV Streamlit Demo
 
 This project demonstrates how to use UV package manager with Streamlit and Docker.
