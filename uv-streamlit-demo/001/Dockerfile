@@ -19,6 +19,11 @@ WORKDIR /app
 COPY ./pyproject.toml ./uv.lock ./
 
 # パッケージのインストール
+# --frozen: pyproject.tomlとロックファイルの整合性が異なっても続行
+# --locked: pyproject.tomlとロックファイルの整合性をチェック(推奨)
+# - 依存関係に変更がある場合、早期にエラーで検出できる
+# - 本番環境での意図しない依存関係の状態を防止
+
 RUN uv sync --frozen --no-install-project
 
 # アプリケーションコードをコピー
