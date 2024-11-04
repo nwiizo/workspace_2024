@@ -1,4 +1,4 @@
-# UVパッケージマネージャーとDocker、Streamlitを使った開発環境の構築
+# uvパッケージマネージャーとDocker、Streamlitを使った開発環境の構築
 
 ## はじめに
 
