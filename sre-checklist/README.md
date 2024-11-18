@@ -1,4 +1,4 @@
-# 包括的なSRE実践チェックリスト
+# SRE チェックリスト
 
 ## 1. Developer Productivity（開発者の生産性）
 
