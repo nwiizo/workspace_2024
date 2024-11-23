@@ -1,0 +1,21 @@
+[[targets]]
+type = "ping"
+host = "8.8.8.8"
+description = "Google DNS"
+
+[[targets]]
+type = "ping"
+host = "1.1.1.1"
+description = "Cloudflare DNS"
+
+[[targets]]
+type = "http"
+url = "https://www.google.com"
+description = "Google Website"
+expected_status = 200
+
+[[targets]]
+type = "http"
+url = "https://api.github.com"
+description = "GitHub API"
+expected_status = 200
