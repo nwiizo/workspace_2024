@@ -14,6 +14,7 @@ use crossterm::{
     },
 };
 use ratatui::{backend::CrosstermBackend, Terminal};
+use std::env;
 use std::fs;
 use std::io;
 
@@ -23,9 +24,16 @@ use crate::ui::run_app;
 
 #[tokio::main]
 async fn main() -> io::Result<()> {
+    // Get the configuration file path from the command line arguments
+    let config_path = env::args()
+        .nth(1)
+        .unwrap_or_else(|| "config.toml".to_string());
+
     // Load configuration
-    let config_content = fs::read_to_string("config.toml").expect("Failed to read config.toml");
-    let config: Config = toml::from_str(&config_content).expect("Failed to parse config.toml");
+    let config_content = fs::read_to_string(&config_path)
+        .unwrap_or_else(|_| panic!("Failed to read {}", config_path));
+    let config: Config = toml::from_str(&config_content)
+        .unwrap_or_else(|_| panic!("Failed to parse {}", config_path));
 
     // Setup terminal
     enable_raw_mode()?;

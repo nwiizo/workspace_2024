@@ -4,13 +4,25 @@ use crate::models::{MonitorResult, Target};
 use crate::ping::ping;
 use std::collections::VecDeque;
 
-#[derive(Clone)]
+#[derive(PartialEq, Clone, Copy)]
+pub enum InputMode {
+    Normal,
+    Resize,
+}
+
+impl Default for InputMode {
+    fn default() -> Self {
+        Self::Normal
+    }
+}
+
 pub struct App {
     pub targets: Vec<Target>,
     pub selected_target: usize,
     pub results: Vec<MonitorResult>,
     pub logs: VecDeque<LogEntry>,
     pub log_scroll_offset: usize,
+    pub input_mode: InputMode,
 }
 
 impl App {
@@ -26,6 +38,7 @@ impl App {
             results,
             logs: VecDeque::with_capacity(MAX_LOG_LINES),
             log_scroll_offset: 0,
+            input_mode: InputMode::Normal, // ここを修正：InputMode::Normalを指定
         }
     }
 
