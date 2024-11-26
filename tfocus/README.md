@@ -1,79 +1,104 @@
 # 🎯 tfocus
 
-> ⚠️ **WARNING**: リソースの個別指定は、本当に必要な時以外は避けるべきです！
+> ⚠️ **WARNING**: Resource targeting should be avoided unless absolutely necessary!
 
-## なにこれ？ 🤔
+## What's this? 🤔
 
-tfocusは、Terraformのリソースを**超！インタラクティブ**に選択してplan/applyできるツールです。
-ただし、これは「非常用設備」です。定常運用には使わないでください。
+tfocus is a **super interactive** tool for selecting and executing Terraform plan/apply on specific resources.
+Think of it as an "emergency tool" - not for everyday use.
 
-## こんな時に使うかも... 🎭
+## Features 🌟
 
-- 🔥 大規模なTerraformコードベースで特定の変更だけを確認したい
-- 🐌 全体のplan時間が長すぎて開発効率が落ちている
-- 🔍 特定のリソースの状態を緊急確認したい
-- 💣 複雑な依存関係のあるインフラで、段階的な適用が必要な時
+- 🔍 Peco-like fuzzy finder for Terraform resources
+- ⚡ Lightning-fast resource selection
+- 🎨 Colorful TUI (Terminal User Interface)
+- 🎹 Vim-like keybindings
+- 📁 Recursive file scanning
 
-**ただし！** 通常のTerraform運用では`terraform plan`と`terraform apply`をそのまま使うのがベストプラクティスです。
-
-## インストール 🛠️
+## Installation 🛠️
 
 ```bash
 cargo install tfocus
 ```
 
-## 使い方 🎮
+## Usage 🎮
 
 ```bash
 cd your-terraform-project
 tfocus
 ```
 
-1. 🔍 fuzzy検索対応のpecoライクなUIが起動
-2. ⌨️ vim風のキーバインドでリソース選択
-3. 🎯 選択したリソースに対してplan/apply実行
+1. 🔍 Launch the fuzzy-search UI
+2. ⌨️ Select resources using vim-like keybindings
+3. 🎯 Execute plan/apply on selected resources
 
-## キーバインド 🎹
+## Keybindings 🎹
 
-- `↑`/`k`: 上に移動
-- `↓`/`j`: 下に移動
-- `/`: インクリメンタル検索
-- `Enter`: 選択
-- `Esc`/`Ctrl+C`: キャンセル
+- `↑`/`k`: Move up
+- `↓`/`j`: Move down
+- `/`: Incremental search
+- `Enter`: Select
+- `Esc`/`Ctrl+C`: Cancel
 
-## ⚠️ 使用上の注意 ⚠️
+## ⚠️ Important Warning ⚠️
 
-`terraform`のリソース個別指定には重大なリスクが伴います：
+Using terraform resource targeting comes with significant risks:
 
-1. 🌳 Terraformのリソースグラフが分断される可能性
-2. 🎲 状態の不整合が発生するリスク
-3. 🧩 依存関係の見落としによる予期せぬ動作
-4. 🤖 通常のTerraform実行フローからの逸脱
+1.  Potential disruption of the Terraform resource graph
+2. 🎲 Risk of state inconsistencies
+3. 🧩 Possible oversight of critical dependencies
+4. 🤖 Deviation from standard Terraform workflow
 
-## 推奨される使用シーン 🎯
+## When to Use 🎯
 
-このツールは以下のような**限定的な状況**でのみ使用してください：
-- 🚑 障害対応や緊急時の確認
-- 🔧 開発時のデバッグ
-- 🧪 テスト環境での動作確認
-- 📊 大規模な変更の影響範囲の確認
+Only use this tool in specific circumstances:
+- 🚑 Emergency troubleshooting
+- 🔧 Development debugging
+- 🧪 Testing environment verification
+- 📊 Impact assessment of large-scale changes
 
-普段の運用では全体に対する plan/apply を使いましょう！
+For regular operations, always use full `terraform plan` and `apply`!
 
-## ライセンス 📜
+## Appropriate Use Cases 🎭
 
-MIT 
+You might consider using tfocus when:
+- 🔥 Working with large Terraform codebases where you need to verify specific changes
+- 🐌 Full plan execution takes too long during development
+- 🔍 Emergency inspection of specific resource states
+- 💣 Staged application of changes in complex infrastructure
 
-## コントリビューション 🤝
+**Remember!** Standard `terraform plan` and `apply` are the best practices for normal operations.
 
-Issue や PR 大歓迎です！
-改善案があればぜひ共有してください！
+## Development Status 🚧
 
-## おまけ 🎬
+This is an experimental tool. Use at your own risk!
 
-このツールは「非常口」のようなものです。
-普段は使わないけど、必要な時にはさっと使えるように...
-でも、できれば使わないで済むようにしたいですよね 😅
+## Example 📺
+
+```bash
+$ tfocus
+QUERY>
+
+▶    1 [File]     main.tf
+     2 [Module]   vpc
+     3 [Resource] aws_vpc.main
+
+[↑/k]Up [↓/j]Down [Enter]Select [Esc/Ctrl+C]Cancel
+```
+
+## Contributing 🤝
+
+Issues and PRs are welcome! 
+Please help make this tool safer and more useful.
+
+## License 📜
+
+MIT
+
+## Final Note 🎬
+
+Think of this tool as a "fire exit" - 
+It's there when you need it, but you hope you never have to use it! 😅
 
 ---
 made with 🦀 and ❤️ by nwiizo
