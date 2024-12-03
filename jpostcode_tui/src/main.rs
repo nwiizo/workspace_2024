@@ -11,8 +11,14 @@ use ratatui::{
     widgets::{Block, Borders, Paragraph, ScrollbarState},
     Terminal,
 };
-use std::io::{self, stdout};
+use std::{
+    io::{self, stdout},
+    sync::mpsc,
+    thread,
+    time::Duration,
+};
 
+#[derive(Clone)]
 enum InputMode {
     Postal,
     Address,
@@ -24,42 +30,80 @@ struct App {
     input_mode: InputMode,
     scroll_state: ScrollbarState,
     scroll_position: u16,
+    search_tx: mpsc::Sender<String>,
+    result_rx: mpsc::Receiver<Vec<String>>,
 }
 
 impl App {
     fn new() -> App {
+        let (search_tx, search_rx) = mpsc::channel::<String>();
+        let (result_tx, result_rx) = mpsc::channel();
+
+        thread::spawn(move || {
+            let mut last_query = String::new();
+            let mut input_mode = InputMode::Postal;
+
+            while let Ok(query) = search_rx.recv() {
+                if query.starts_with("MODE_CHANGE:") {
+                    input_mode = match &query[11..] {
+                        "postal" => InputMode::Postal,
+                        _ => InputMode::Address,
+                    };
+                    continue;
+                }
+
+                if query == last_query {
+                    continue;
+                }
+                last_query = query.clone();
+
+                if query.is_empty() {
+                    let _ = result_tx.send(Vec::new());
+                    continue;
+                }
+
+                thread::sleep(Duration::from_millis(100));
+
+                let results = match input_mode {
+                    InputMode::Postal => lookup_addresses(&query)
+                        .map(|addresses| {
+                            addresses
+                                .into_iter()
+                                .map(|addr| addr.formatted_with_kana())
+                                .collect()
+                        })
+                        .unwrap_or_default(),
+                    InputMode::Address => search_by_address(&query)
+                        .into_iter()
+                        .map(|addr| addr.formatted_with_kana())
+                        .collect(),
+                };
+                let _ = result_tx.send(results);
+            }
+        });
+
         App {
             input: String::new(),
             results: Vec::new(),
             input_mode: InputMode::Postal,
             scroll_state: ScrollbarState::default(),
             scroll_position: 0,
+            search_tx,
+            result_rx,
         }
     }
 
     fn search(&mut self) {
-        self.results.clear();
-        if self.input.is_empty() {
-            return;
-        }
+        let _ = self.search_tx.send(self.input.clone());
+    }
 
-        match self.input_mode {
-            InputMode::Postal => {
-                if let Ok(addresses) = lookup_addresses(&self.input) {
-                    for addr in addresses {
-                        self.results.push(addr.formatted_with_kana());
-                    }
-                }
-            }
-            InputMode::Address => {
-                let addresses = search_by_address(&self.input);
-                for addr in addresses {
-                    self.results.push(addr.formatted_with_kana());
-                }
-            }
-        }
-        self.scroll_position = 0;
-        self.scroll_state = ScrollbarState::new(self.results.len());
+    fn change_mode(&mut self, mode: InputMode) {
+        self.input_mode = mode;
+        let mode_str = match self.input_mode {
+            InputMode::Postal => "postal",
+            InputMode::Address => "address",
+        };
+        let _ = self.search_tx.send(format!("MODE_CHANGE:{}", mode_str));
     }
 
     fn scroll_up(&mut self) {
@@ -72,6 +116,14 @@ impl App {
                 .scroll_position
                 .saturating_add(1)
                 .min((self.results.len() as u16).saturating_sub(1));
+        }
+    }
+
+    fn check_results(&mut self) {
+        if let Ok(new_results) = self.result_rx.try_recv() {
+            self.results = new_results;
+            self.scroll_position = 0;
+            self.scroll_state = ScrollbarState::new(self.results.len());
         }
     }
 }
@@ -87,6 +139,8 @@ fn main() -> io::Result<()> {
     let mut app = App::new();
 
     loop {
+        app.check_results();
+
         terminal.draw(|f| {
             let chunks = Layout::default()
                 .direction(Direction::Vertical)
@@ -132,10 +186,10 @@ fn main() -> io::Result<()> {
                 KeyCode::Up => app.scroll_up(),
                 KeyCode::Down => app.scroll_down(),
                 KeyCode::Tab => {
-                    app.input_mode = match app.input_mode {
+                    app.change_mode(match app.input_mode {
                         InputMode::Postal => InputMode::Address,
                         InputMode::Address => InputMode::Postal,
-                    };
+                    });
                     app.input.clear();
                     app.results.clear();
                 }
