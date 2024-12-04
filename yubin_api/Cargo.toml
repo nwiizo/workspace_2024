@@ -1,0 +1,30 @@
+[package]
+name = "yubin_api"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = { version = "0.7", features = ["macros"] }
+tokio = { version = "1.0", features = ["full"] }
+tower = { version = "0.4", features = ["full"] }
+tower-http = { version = "0.5", features = ["cors", "trace", "limit", "request-id"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "1.0"
+metrics = "0.21"
+metrics-exporter-prometheus = "0.12"
+prometheus-client = "0.22.0"
+uuid = { version = "1.0", features = ["v4"] }
+utoipa = { version = "4.1", features = ["uuid"] }
+jpostcode_rs = "0.1.3"
+
+[dev-dependencies]
+tokio-test = "0.4"
+hyper = { version = "1.0", features = ["full"] }
+tower-test = "0.4"
+
+[features]
+default = ["metrics"]
+metrics = []
