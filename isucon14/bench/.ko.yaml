@@ -1,0 +1,12 @@
+defaultPlatforms:
+  - linux/arm64
+  - linux/amd64
+
+builds:
+  - id: bench
+    dir: .
+    main: .
+    ldflags:
+      - -s
+      - -w
+      - -X github.com/isucon/isucon14/bench/cmd.version={{.Git.ShortCommit}}
