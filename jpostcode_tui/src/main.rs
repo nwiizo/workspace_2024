@@ -12,11 +12,14 @@ use ratatui::{
     Terminal,
 };
 use std::{
+    collections::HashMap,
     io::{self, stdout},
-    sync::mpsc,
+    sync::{mpsc, LazyLock, Mutex},
     thread,
     time::Duration,
 };
+
+static INITIALIZED: LazyLock<Mutex<bool>> = LazyLock::new(|| Mutex::new(false));
 
 #[derive(Clone)]
 enum InputMode {
@@ -40,8 +43,18 @@ impl App {
         let (result_tx, result_rx) = mpsc::channel();
 
         thread::spawn(move || {
+            {
+                let mut init = INITIALIZED.lock().unwrap();
+                if !*init {
+                    let _ = lookup_addresses("100");
+                    let _ = search_by_address("東京");
+                    *init = true;
+                }
+            }
+
             let mut last_query = String::new();
             let mut input_mode = InputMode::Postal;
+            let mut cache: HashMap<String, Vec<String>> = HashMap::new();
 
             while let Ok(query) = search_rx.recv() {
                 if query.starts_with("MODE_CHANGE:") {
@@ -62,9 +75,14 @@ impl App {
                     continue;
                 }
 
-                thread::sleep(Duration::from_millis(100));
+                if let Some(cached_results) = cache.get(&query) {
+                    let _ = result_tx.send(cached_results.clone());
+                    continue;
+                }
 
-                let results = match input_mode {
+                thread::sleep(Duration::from_millis(50));
+
+                let results: Vec<String> = match input_mode {
                     InputMode::Postal => lookup_addresses(&query)
                         .map(|addresses| {
                             addresses
@@ -78,6 +96,8 @@ impl App {
                         .map(|addr| addr.formatted_with_kana())
                         .collect(),
                 };
+
+                cache.insert(query.clone(), results.clone());
                 let _ = result_tx.send(results);
             }
         });
@@ -145,7 +165,7 @@ fn main() -> io::Result<()> {
             let chunks = Layout::default()
                 .direction(Direction::Vertical)
                 .constraints([Constraint::Length(3), Constraint::Min(0)])
-                .split(f.size());
+                .split(f.area());
 
             let mode = match app.input_mode {
                 InputMode::Postal => "郵便番号検索 (Tab: モード切替, ↑↓: スクロール, Esc: 終了)",
