@@ -1,0 +1,176 @@
+use proconio::input;
+use std::collections::{BTreeSet, HashMap};
+
+// 安全な座標計算用の関数
+#[inline(always)]
+fn safe_add(a: i64, b: i64) -> i64 {
+    if b >= 0 {
+        if a > i64::MAX - b {
+            i64::MAX
+        } else {
+            a + b
+        }
+    } else {
+        if a < i64::MIN - b {
+            i64::MIN
+        } else {
+            a + b
+        }
+    }
+}
+
+#[inline(always)]
+fn move_coordinate(curr: i64, dist: i64, is_positive: bool) -> i64 {
+    if is_positive {
+        safe_add(curr, dist)
+    } else {
+        safe_add(curr, -dist)
+    }
+}
+
+fn solve(
+    _n: usize,
+    _m: usize,
+    sx: i64,
+    sy: i64,
+    houses: &[(i64, i64)],
+    moves: &[(char, i64)],
+) -> (i64, i64, usize) {
+    // 座標を収集
+    let mut x_set = BTreeSet::new();
+    let mut y_set = BTreeSet::new();
+
+    // 初期位置
+    x_set.insert(sx);
+    y_set.insert(sy);
+
+    // 家の座標
+    for &(x, y) in houses {
+        x_set.insert(x);
+        y_set.insert(y);
+    }
+
+    // 移動後の座標を計算して追加
+    let mut curr_x = sx;
+    let mut curr_y = sy;
+    for &(dir, dist) in moves {
+        let (next_x, next_y) = match dir {
+            'U' => (curr_x, move_coordinate(curr_y, dist, true)),
+            'D' => (curr_x, move_coordinate(curr_y, dist, false)),
+            'L' => (move_coordinate(curr_x, dist, false), curr_y),
+            'R' => (move_coordinate(curr_x, dist, true), curr_y),
+            _ => unreachable!(),
+        };
+        x_set.insert(next_x);
+        y_set.insert(next_y);
+        curr_x = next_x;
+        curr_y = next_y;
+    }
+
+    // 座標圧縮用の配列とマップを作成
+    let x_values: Vec<i64> = x_set.into_iter().collect();
+    let y_values: Vec<i64> = y_set.into_iter().collect();
+
+    let x_map: HashMap<i64, usize> = x_values.iter().enumerate().map(|(i, &x)| (x, i)).collect();
+    let y_map: HashMap<i64, usize> = y_values.iter().enumerate().map(|(i, &y)| (y, i)).collect();
+
+    // 圧縮座標での家の位置を記録
+    let mut house_grid = vec![vec![None; x_map.len()]; y_map.len()];
+    for (i, &(x, y)) in houses.iter().enumerate() {
+        let cx = x_map[&x];
+        let cy = y_map[&y];
+        house_grid[cy][cx] = Some(i);
+    }
+
+    // 移動シミュレーション
+    let mut visited = vec![false; houses.len()];
+    let mut visit_count = 0;
+    let (mut curr_x, mut curr_y) = (sx, sy);
+
+    for &(dir, dist) in moves {
+        let (next_x, next_y) = match dir {
+            'U' => (curr_x, move_coordinate(curr_y, dist, true)),
+            'D' => (curr_x, move_coordinate(curr_y, dist, false)),
+            'L' => (move_coordinate(curr_x, dist, false), curr_y),
+            'R' => (move_coordinate(curr_x, dist, true), curr_y),
+            _ => unreachable!(),
+        };
+
+        let curr_cx = x_map[&curr_x];
+        let curr_cy = y_map[&curr_y];
+        let next_cx = x_map[&next_x];
+        let next_cy = y_map[&next_y];
+
+        match dir {
+            'U' | 'D' => {
+                let (start_cy, end_cy) = if curr_cy <= next_cy {
+                    (curr_cy, next_cy)
+                } else {
+                    (next_cy, curr_cy)
+                };
+                for cy in start_cy..=end_cy {
+                    if let Some(idx) = house_grid[cy][curr_cx] {
+                        if !visited[idx] {
+                            visited[idx] = true;
+                            visit_count += 1;
+                        }
+                    }
+                }
+            }
+            'L' | 'R' => {
+                let (start_cx, end_cx) = if curr_cx <= next_cx {
+                    (curr_cx, next_cx)
+                } else {
+                    (next_cx, curr_cx)
+                };
+                for cx in start_cx..=end_cx {
+                    if let Some(idx) = house_grid[curr_cy][cx] {
+                        if !visited[idx] {
+                            visited[idx] = true;
+                            visit_count += 1;
+                        }
+                    }
+                }
+            }
+            _ => unreachable!(),
+        }
+
+        curr_x = next_x;
+        curr_y = next_y;
+    }
+
+    (curr_x, curr_y, visit_count)
+}
+
+fn main() {
+    input! {
+        n: usize,
+        m: usize,
+        sx: i64,
+        sy: i64,
+        houses: [(i64, i64); n],
+        moves: [(char, i64); m],
+    }
+
+    let (final_x, final_y, visited_count) = solve(n, m, sx, sy, &houses, &moves);
+    println!("{} {} {}", final_x, final_y, visited_count);
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_sample1() {
+        let houses = vec![(2, 2), (3, 3), (2, 1)];
+        let moves = vec![('L', 2), ('D', 1), ('R', 1), ('U', 2)];
+        assert_eq!(solve(3, 4, 3, 2, &houses, &moves), (2, 3, 2));
+    }
+
+    #[test]
+    fn test_sample2() {
+        let houses = vec![(1, 1)];
+        let moves = vec![('R', 1000000000), ('R', 1000000000), ('R', 1000000000)];
+        assert_eq!(solve(1, 3, 0, 0, &houses, &moves), (3000000000, 0, 0));
+    }
+}
