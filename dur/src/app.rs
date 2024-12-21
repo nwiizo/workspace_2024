@@ -1,3 +1,4 @@
+// src/app.rs
 use crate::{
     scanner::scan_dir_lazy,
     types::{DirEntry, SizeCache},

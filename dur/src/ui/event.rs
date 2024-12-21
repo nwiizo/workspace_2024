@@ -1,3 +1,4 @@
+// src/ui/event.rs
 use anyhow::Result;
 use crossterm::event::{self, Event as CrosstermEvent, KeyCode};
 use std::time::Duration;

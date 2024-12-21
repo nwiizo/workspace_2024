@@ -1,3 +1,4 @@
+// src/ui/draw.rs
 use crate::types::DirEntry;
 use humansize::{format_size, BINARY};
 use ratatui::{
@@ -8,6 +9,26 @@ use ratatui::{
     Frame,
 };
 use unicode_width::UnicodeWidthStr;
+
+fn get_bar_style(percentage: u16) -> Style {
+    if percentage > 75 {
+        Style::default().fg(Color::Red)
+    } else if percentage > 50 {
+        Style::default().fg(Color::Yellow)
+    } else {
+        Style::default().fg(Color::Green)
+    }
+}
+
+fn create_bar(percentage: u16) -> (String, Style) {
+    let width = 20;
+    let filled = ((percentage as f64 / 100.0) * width as f64).round() as usize;
+    let empty = width - filled;
+
+    let bar = format!("[{}{}]", "█".repeat(filled), "░".repeat(empty));
+
+    (bar, get_bar_style(percentage))
+}
 
 pub fn draw_entry(entry: &DirEntry, total_size: u64, width: u16) -> Line<'static> {
     let name = entry
@@ -33,7 +54,10 @@ pub fn draw_entry(entry: &DirEntry, total_size: u64, width: u16) -> Line<'static
         "📄 ".to_string()
     };
 
-    let available_width = width.saturating_sub(prefix.width() as u16 + 20) as usize;
+    let (bar, bar_style) = create_bar(percentage);
+
+    let available_width =
+        width.saturating_sub(prefix.width() as u16 + bar.width() as u16 + 30) as usize;
     let truncated_name = if name.width() > available_width {
         format!("{}...", &name[..available_width.saturating_sub(3)])
     } else {
@@ -41,6 +65,8 @@ pub fn draw_entry(entry: &DirEntry, total_size: u64, width: u16) -> Line<'static
     };
 
     Line::from(vec![
+        Span::styled(bar, bar_style),
+        Span::raw(" "),
         Span::from(prefix),
         Span::from(truncated_name),
         Span::styled(format!(" {:>8} ", size), Style::default().fg(Color::Yellow)),
@@ -99,6 +125,8 @@ pub fn create_list<'a>(items: Vec<ListItem<'a>>) -> List<'a> {
 
 pub fn create_others_item(entries_count: usize, others_size: u64) -> ListItem<'static> {
     ListItem::new(Line::from(vec![
+        Span::styled("░".repeat(20), Style::default().fg(Color::DarkGray)),
+        Span::raw(" "),
         Span::from("... "),
         Span::styled(
             format!("{} other items", entries_count),

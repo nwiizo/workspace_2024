@@ -1,3 +1,4 @@
+// src/main.rs
 mod app;
 mod scanner;
 mod types;

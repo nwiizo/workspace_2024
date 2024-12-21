@@ -1,3 +1,4 @@
+// src/scanner.rs
 use crate::types::{DirEntry, SizeCache};
 use indicatif::ProgressBar;
 use std::path::Path;

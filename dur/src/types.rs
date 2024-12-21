@@ -1,3 +1,4 @@
+// src/types.rs
 use dashmap::DashMap;
 use std::path::PathBuf;
 use std::sync::Arc;
