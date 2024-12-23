@@ -4,14 +4,15 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-ratatui = "0.24"
-num_cpus = "1.16"
-crossterm = "0.27"
-walkdir = "2.4"
 anyhow = "1.0"
 clap = { version = "4.4", features = ["derive"] }
+crossterm = "0.27"
+dirs = "5.0"
 humansize = "2.1"
-rayon = "1.8"
 indicatif = "0.17"
-dashmap = "5.5"
-unicode-width = "0.1.11"
+rayon = "1.8"
+ratatui = "0.26.1"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+unicode-width = "0.1"
+walkdir = "2.4"
